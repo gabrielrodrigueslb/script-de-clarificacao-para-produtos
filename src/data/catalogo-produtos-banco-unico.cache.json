@@ -1,0 +1,1122 @@
+{
+  "7898031311034::Violeta Genciana 30 mL::": {
+    "taxonomy": null,
+    "metadata": {
+      "source": "openai_low_confidence",
+      "confidence": 0.6,
+      "candidateCount": 25,
+      "rationale": "O produto 'Violeta Genciana 30 mL' é um medicamento, possivelmente tarjado, usado para fins medicinais. Entre os candidatos disponíveis, a categoria 'Medicamento Tarjado' no departamento 'Medicamentos' é a mais adequada, apesar do segmento 'Antidiabetes' não ser exatamente o uso do produto, é o candidato mais próximo e relevante dentro das opções fornecidas.",
+      "selectedCandidateId": "taxonomy_2038"
+    }
+  },
+  "7896360001176::Algi Articular FR 30 comprimidos::": {
+    "taxonomy": {
+      "departamento": "Cuidados Saude",
+      "categoria": "Primeiros Socorros",
+      "subcategoria": "Acessorios Sos",
+      "segmento": "Acessorios Farmacinha",
+      "subsegmento": "Porta Comprimidos"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto 'Algi Articular FR 30 comprimidos' parece ser um acessório relacionado a medicamentos ou cuidados de saúde, e o candidato com maior score e mais adequado é 'Porta Comprimidos' na categoria 'Primeiros Socorros', que é um acessório para armazenar comprimidos, condizente com o nome do produto."
+    }
+  },
+  "7897889105529::Lancetas Injex 100 Unidades::": {
+    "taxonomy": {
+      "departamento": "Cuidados Saude",
+      "categoria": "Monitoramento Saude",
+      "subcategoria": "Monitoramento Glicemico",
+      "segmento": "Medicao Glicemia",
+      "subsegmento": "Lanceta"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto 'Lancetas Injex 100 Unidades' é utilizado para monitoramento glicêmico, encaixando-se perfeitamente na categoria 'Cuidados Saude > Monitoramento Saude > Monitoramento Glicemico > Medicao Glicemia > Lanceta', que possui o maior score heurístico (90.44) entre os candidatos apresentados."
+    }
+  },
+  "7898483533787::Óleo de Coco 200 mL::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Mercearia",
+      "subcategoria": "Mercearia Salgada",
+      "segmento": "Oleos E Azeites",
+      "subsegmento": "Oleo Coco"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um óleo de coco, que se encaixa melhor na categoria de Alimentos > Mercearia > Mercearia Salgada > Óleos e Azeites > Óleo de Coco, pois é um alimento e não um suplemento esportivo ou produto de higiene pessoal."
+    }
+  },
+  "7896523211572::Plavom 4 mg/mL gotas 10 mL::CLORIDRATO DE METOCLOPRAMIDA": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Tarjado",
+      "subcategoria": "Tarjado Generico",
+      "segmento": "Antiemeticos/ Digestivos",
+      "subsegmento": "Metoclopramida"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é Plavom 4 mg/mL gotas com princípio ativo Cloridrato de Metoclopramida, que é um antiemético. Entre os candidatos, os que correspondem ao segmento 'Antiemeticos/ Digestivos' e subsegmento 'Metoclopramida' são os mais adequados. Dentre eles, a categoria 'Tarjado Generico' é a mais provável, pois o nome do produto não indica marca específica, e o fabricante é CIMED, que pode produzir genéricos. O score heurístico é o mais alto entre os candidatos relacionados."
+    }
+  },
+  "78930230::Baton Garoto Creme ao Leit 16 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Sorvetes",
+      "subcategoria": "Sorvete Familia",
+      "segmento": "Sorvete Familia Ate 1lt",
+      "subsegmento": "Sorvete Pote Ate 1lt Creme"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um Baton Garoto Creme ao Leite, que é um tipo de chocolate ou doce, portanto se encaixa melhor na categoria de alimentos, especificamente em sorvetes de creme, que é a categoria mais próxima disponível entre os candidatos. As outras categorias são relacionadas a cuidados pessoais, higiene ou dermocosméticos, que não correspondem ao produto."
+    }
+  },
+  "7895296278010::Onimorf 50 mg/mL esmalte 2,5 mL + 10 espátulas + 30 lixas + 30 compressas::CLORIDRATO DE AMOROLFINA": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Antifungicos",
+      "subsegmento": "Cloridrato De Amorolfina"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um medicamento antifúngico contendo cloridrato de amorolfina, indicado para uso tópico em unhas. A melhor correspondência na lista é a categoria 'Medicamento Otc' > 'Otc Marca' > 'Antifungicos' > 'Cloridrato De Amorolfina', que corresponde exatamente ao princípio ativo e uso do produto."
+    }
+  },
+  "7898909451015::Pe Fino Mircris Locao::": {
+    "taxonomy": {
+      "departamento": "Dermocosmeticos",
+      "categoria": "Dermo Corporal",
+      "subcategoria": "Dermo Corporal Hidratação",
+      "segmento": "Dermo Corporal Hidratação",
+      "subsegmento": "Locao Hidratante Corporal"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'Pe Fino Mircris Locao' é uma loção corporal hidratante, sem indicação de proteção solar ou infantil, e o candidato taxonomy_637 corresponde exatamente a 'Dermo Corporal Hidratação' com subsegmento 'Locao Hidratante Corporal', que é a classificação mais adequada entre os candidatos fornecidos."
+    }
+  },
+  "7898918555339::Óleo de Hortelã 30 mL::": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Vitaminas E Minerais",
+      "subsegmento": "Oleo De Alho"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.82,
+      "candidateCount": 25,
+      "rationale": "O produto é um óleo de hortelã, que se encaixa melhor na categoria de Medicamentos OTC, especificamente em Vitaminas e Minerais, subsegmento Óleo de Alho, por ser um óleo com potencial uso terapêutico, similar a óleos medicinais."
+    }
+  },
+  "7898567451099::Sabonete de Porcelana Pele Ole::": {
+    "taxonomy": {
+      "departamento": "Dermocosmeticos",
+      "categoria": "Dermo Facial",
+      "subcategoria": "Dermo Facial Limpeza",
+      "segmento": "Dermo Pele Oleosa Acneica",
+      "subsegmento": "Dermo Facial Oleosa Sabonete Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um sabonete para pele oleosa, indicado para higiene pessoal, e o candidato taxonomy_654 corresponde a sabonete barra para pele oleosa acneica, que é o mais adequado entre as opções disponíveis."
+    }
+  },
+  "7891118001699::Goma de Mascar Extra Forte 12::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Goma De Mascar",
+      "segmento": "Goma De Mascar",
+      "subsegmento": "Goma De Mascar"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é uma goma de mascar extra forte, que se encaixa perfeitamente na categoria 'Goma De Mascar' dentro do departamento 'Alimentos' e categoria 'Bomboniere'. Esta é a correspondência mais direta e relevante entre os candidatos fornecidos."
+    }
+  },
+  "7891118025145::Flics Diversos 17 g::": {
+    "taxonomy": {
+      "departamento": "Bazar",
+      "categoria": "Papelaria E Escritorio",
+      "subcategoria": "Acessorio",
+      "segmento": "Diversos",
+      "subsegmento": "Protetor P/Documento"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.94,
+      "candidateCount": 25,
+      "rationale": "O produto 'Flics Diversos 17 g' da Arcor é mais compatível com a categoria de Papelaria e Escritório, especificamente como acessório para proteção de documentos, conforme indicado pelo alto score heurístico (94.08) para 'Protetor P/Documento'. As outras categorias apresentaram scores muito inferiores e não correspondem ao tipo de produto."
+    }
+  },
+  "7896111945933::Esmalte Impala Nude Clássico::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Manicure",
+      "subcategoria": "Esmalte E Base",
+      "segmento": "Esmaltes",
+      "subsegmento": "Esmalte Cremoso"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um esmalte cremoso da marca Impala, que se encaixa perfeitamente na categoria 'Beleza E Cuidados > Manicure > Esmalte E Base > Esmaltes > Esmalte Cremoso', que é a categoria com maior score heurístico e corresponde exatamente ao tipo do produto."
+    }
+  },
+  "7898142862463::Tortuguita Branco Cookies 50 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Biscoitos",
+      "subcategoria": "Biscoito Doce",
+      "segmento": "Cookie",
+      "subsegmento": "Cookie Sabores"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.91,
+      "candidateCount": 25,
+      "rationale": "O produto 'Tortuguita Branco Cookies 50 g' é um biscoito doce do tipo cookie, conforme indicado pelo nome e fabricante. A categoria 'Biscoitos > Biscoito Doce > Cookie > Cookie Sabores' é a mais adequada entre os candidatos, apresentando o maior score heurístico (91), refletindo a melhor correspondência com o produto."
+    }
+  },
+  "7896033203265::Fiona Chupeta Orto N2::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Chupeta E Acessorios",
+      "subcategoria": "Chupetas",
+      "segmento": "Chupeta Ortodontica",
+      "subsegmento": "Chupeta Popular Ortodontica"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é uma chupeta ortodôntica (Fiona Chupeta Orto N2), e entre os candidatos disponíveis, a categoria 'Chupeta Ortodontica' com subsegmento 'Chupeta Popular Ortodontica' é a mais adequada, apresentando alta pontuação heurística e correspondência direta com o tipo do produto."
+    }
+  },
+  "7891055538722::Fio Dental Hotwheels::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Higiene Bucal",
+      "subcategoria": "Higiene Bucal Diaria",
+      "segmento": "Fio E Fita Dental",
+      "subsegmento": "Fio Dental"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um fio dental da marca Hotwheels, que se encaixa perfeitamente na categoria de Fio Dental dentro do segmento Fio E Fita Dental, subcategoria Higiene Bucal Diaria, departamento Higiene Pessoal. Esta categoria tem o maior score heurístico e é a mais adequada para o produto."
+    }
+  },
+  "7896033202398::Fiona Chupeta Orto N2::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Chupeta E Acessorios",
+      "subcategoria": "Chupetas",
+      "segmento": "Chupeta Ortodontica",
+      "subsegmento": "Chupeta Popular Ortodontica"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é uma chupeta ortodôntica (Fiona Chupeta Orto N2), portanto a categoria mais adequada é 'Chupeta Ortodontica' com o subsegmento 'Chupeta Popular Ortodontica', que corresponde exatamente ao tipo do produto."
+    }
+  },
+  "7896033202473::Fiona Chupeta Redonda N2::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Chupeta E Acessorios",
+      "subcategoria": "Chupetas",
+      "segmento": "Chupeta Comum",
+      "subsegmento": "Chupeta Comum Popular"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é uma chupeta redonda, que se encaixa diretamente na categoria 'Chupeta Comum Popular' dentro do departamento Infantil e categoria Chupeta E Acessorios. Essa classificação é a mais adequada considerando o nome e tipo do produto."
+    }
+  },
+  "7896132122214::Protetor Solar Labial FPS 30 V::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Protecao Solar",
+      "subcategoria": "Protecao Solar Labial",
+      "segmento": "Protetor Solar Labial",
+      "subsegmento": "Protetor Solar Labial"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto é um protetor solar labial FPS 30, e a categoria 'Protecao Solar Labial' com segmento 'Protetor Solar Labial' é a mais adequada e específica para este tipo de produto, apresentando o maior score heurístico entre os candidatos."
+    }
+  },
+  "7896132105989::Manteiga de Cacau Roll On::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Alimentos Pereciveis",
+      "subcategoria": "Frios E Laticinios",
+      "segmento": "Manteiga E Margarina",
+      "subsegmento": "Manteiga De Coco"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.8,
+      "candidateCount": 25,
+      "rationale": "O produto é 'Manteiga de Cacau Roll On', que é um tipo de manteiga, e a categoria mais próxima e disponível na lista é 'Manteiga De Coco' dentro do segmento 'Manteiga E Margarina' no departamento de Alimentos. Apesar de ser manteiga de cacau e não de coco, esta é a categoria mais adequada entre as opções fornecidas."
+    }
+  },
+  "7896132100045::Manteiga de Cacau Incolor::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Alimentos Pereciveis",
+      "subcategoria": "Frios E Laticinios",
+      "segmento": "Manteiga E Margarina",
+      "subsegmento": "Manteiga De Coco"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.85,
+      "candidateCount": 25,
+      "rationale": "O produto é 'Manteiga de Cacau Incolor', que é um tipo de manteiga. A categoria mais adequada entre os candidatos é 'Manteiga De Coco' dentro do segmento 'Manteiga E Margarina' em 'Frios E Laticinios' no departamento 'Alimentos', pois manteigas vegetais são classificadas neste segmento. Apesar de ser manteiga de cacau e não de coco, não há categoria específica para manteiga de cacau, e esta é a mais próxima e relevante."
+    }
+  },
+  "7898589723150::Magnésio Quelato 500 mg c/60 cp::": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Vitaminas E Minerais",
+      "subsegmento": "Magnesio"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.94,
+      "candidateCount": 25,
+      "rationale": "O produto é Magnésio Quelato 500 mg, que se enquadra melhor na categoria de Medicamento Otc, subcategoria Otc Marca, segmento Vitaminas E Minerais, subsegmento Magnésio, conforme o maior score heurístico e a correspondência direta com o tipo de suplemento mineral."
+    }
+  },
+  "7891008209051::Tribullus Monster 500 mg C60 Cp::": {
+    "taxonomy": {
+      "departamento": "Cuidados Saude",
+      "categoria": "Nutricao Adulto",
+      "subcategoria": "Suplemento Adulto",
+      "segmento": "Suplemento Alimentar Senior",
+      "subsegmento": "Suplemento Alimentar Senior Cp"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.85,
+      "candidateCount": 25,
+      "rationale": "O produto 'Tribullus Monster 500 mg C60 Cp' é um suplemento alimentar, indicado pela presença de '500 mg' e 'C60 Cp' (60 cápsulas), e não um medicamento ou utensílio doméstico. Entre os candidatos, a categoria 'Suplemento Alimentar Senior Cp' no departamento 'Cuidados Saude' é a mais adequada para classificar suplementos alimentares, mesmo que o produto não especifique ser para idosos, essa é a categoria mais próxima e correta dentro das opções fornecidas."
+    }
+  },
+  "7891317031275::20 Bi 435 mg 10 comprimidos::": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Gastro",
+      "subsegmento": "Hidrox Mg/Hidrox Al/Carb. Calcio"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto '20 Bi 435 mg 10 comprimidos' parece ser um medicamento OTC relacionado a problemas gastrointestinais, possivelmente antiácido ou similar, e o candidato taxonomy_1209 corresponde a Medicamento Otc na categoria Gastro, subsegmento Hidrox Mg/Hidrox Al/Carb. Calcio, que é compatível com o tipo de produto e fabricante."
+    }
+  },
+  "7896036522721::NEOPAN Mamadeira RS 70 mL::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Mamadeira E Bico",
+      "subcategoria": "Mamadeiras",
+      "segmento": "Mamadeira Intermediaria",
+      "subsegmento": "Mamadeira Intermediaria 70ml"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto é uma mamadeira de 70 mL, e o candidato taxonomy_1069 corresponde exatamente à categoria 'Mamadeira Intermediaria 70ml' dentro do departamento Infantil, com o maior score heurístico, indicando alta relevância e precisão na classificação."
+    }
+  },
+  "7898142859081::Chocolate Aerado Duo 30 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Chocolate Barra",
+      "subsegmento": "Chocolate Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é um chocolate aerado em barra, portanto a categoria mais adequada é 'Alimentos > Bomboniere > Chocolates > Chocolate Barra > Chocolate Barra'."
+    }
+  },
+  "7896036541326::Neopan Chupeta Criativa Conv N::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Chupeta E Acessorios",
+      "subcategoria": "Chupetas",
+      "segmento": "Chupeta Comum",
+      "subsegmento": "Chupeta Comum Popular"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é uma chupeta da marca NEOPAN, indicada para o departamento Infantil. Entre os candidatos, a categoria 'Chupeta E Acessorios' com subcategoria 'Chupetas' e segmento 'Chupeta Comum' com subsegmento 'Chupeta Comum Popular' é a mais adequada, pois corresponde exatamente ao tipo de produto descrito e possui o maior score heurístico."
+    }
+  },
+  "611269991000::Red Bull Energy Drink 250 mL::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Chocolate Barra",
+      "subsegmento": "Chocolate Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é uma bebida energética (Red Bull Energy Drink 250 mL), que não se encaixa nas categorias de mamadeiras, cuidados pessoais ou medicamentos listados. Entre os candidatos, a categoria mais próxima e plausível é 'Alimentos > Bomboniere > Chocolates > Chocolate Barra', pois é a única categoria relacionada a alimentos, embora não perfeita. Nenhuma categoria específica para bebidas energéticas está disponível, portanto escolho a que melhor representa alimentos consumíveis."
+    }
+  },
+  "7897947611788::Voxx Repositor Energético 30 g::": {
+    "taxonomy": {
+      "departamento": "Fitness",
+      "categoria": "Nutricao Esportiva",
+      "subcategoria": "Pre-Treino Emagrecedores",
+      "segmento": "Pre-Treino",
+      "subsegmento": "Combo Energetico"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'Voxx Repositor Energético 30 g' é um suplemento energético indicado para uso pré-treino, o que se encaixa perfeitamente na categoria 'Pre-Treino Emagrecedores' dentro do departamento 'Fitness' e categoria 'Nutrição Esportiva'. Essa categoria tem o maior score heurístico e é a mais adequada para o tipo de produto apresentado."
+    }
+  },
+  "7896023791666::Melagriao Limao s/Acucar 1 Sac::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Chocolate Barra",
+      "subsegmento": "Chocolate Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um melagriao limao sem açúcar, que é um alimento. Entre as opções disponíveis, a categoria mais adequada é 'Alimentos > Bomboniere > Chocolates > Chocolate Barra', pois é a única relacionada a alimentos, apesar de não ser uma correspondência perfeita, é a melhor opção entre os candidatos fornecidos."
+    }
+  },
+  "7896075707288::Palito para Unhas Pote MERHEJE::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Manicure",
+      "subcategoria": "Acessorios Manicure",
+      "segmento": "Instrumentos Manicure",
+      "subsegmento": "Palito Unha"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um palito para unhas, que se encaixa diretamente na categoria 'Palito Unha' dentro do segmento 'Instrumentos Manicure' e subcategoria 'Acessorios Manicure' no departamento 'Beleza E Cuidados'. Esta categoria é a mais específica e adequada entre os candidatos apresentados."
+    }
+  },
+  "300652439266::Systane UL 15 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Cuidado Intimo Feminino",
+      "subcategoria": "Absorvente",
+      "segmento": "Protetor Diario",
+      "subsegmento": "Ate 15 Unidades"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.7,
+      "candidateCount": 25,
+      "rationale": "O produto 'Systane UL 15 mL' é um lubrificante ocular, que se relaciona mais com cuidados pessoais e higiene íntima do que com as outras categorias listadas. Entre as opções disponíveis, a categoria 'Higiene Pessoal > Cuidado Intimo Feminino > Absorvente > Protetor Diario > Ate 15 Unidades' é a que mais se aproxima de um produto de cuidado pessoal para uso diário, apesar de não ser uma correspondência perfeita. As demais categorias são claramente para outros tipos de produtos (beleza, cabelos, alimentos, medicamentos), que não correspondem ao produto em questão."
+    }
+  },
+  "7898142859180::Bon O Bon Diversos Sabores::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Biscoitos",
+      "subcategoria": "Biscoito Doce",
+      "segmento": "Cookie",
+      "subsegmento": "Cookie Sabores"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'Bon O Bon Diversos Sabores' é um doce, similar a biscoitos doces recheados, portanto a categoria mais adequada entre os candidatos é 'Biscoitos > Biscoito Doce > Cookie > Cookie Sabores', que corresponde ao candidate_id taxonomy_98."
+    }
+  },
+  "7898126406713::Bio Extratus Óleo Argan 8 mL::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Cuidado Pele",
+      "subcategoria": "Cuidado Corpo E Maos",
+      "segmento": "Creme Massageador",
+      "subsegmento": "Oleo Massageador"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um óleo de argan da marca Bio Extratus, que é tipicamente usado para cuidados corporais e de beleza. A categoria 'Beleza E Cuidados > Cuidado Pele > Cuidado Corpo E Maos > Creme Massageador > Oleo Massageador' é a mais adequada entre as opções fornecidas, pois corresponde ao uso cosmético e corporal do óleo, ao contrário das outras categorias que são mais específicas para alimentos, medicamentos ou outros tipos de óleos."
+    }
+  },
+  "7891317031268::20 Bi 5CPS::": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Vitaminas E Minerais",
+      "subsegmento": "Multivitaminicos"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto '20 Bi 5CPS' da MOMENTA FARMACEUTICA parece ser um medicamento ou suplemento, possivelmente multivitamínico, devido ao nome e fabricante. Entre as categorias disponíveis, a mais adequada é 'Medicamento Otc' > 'Otc Marca' > 'Vitaminas E Minerais' > 'Multivitaminicos', representada pelo candidate_id taxonomy_1347."
+    }
+  },
+  "7898395842656::Escova Dentrat POS Cirúrgica::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Higiene Bucal",
+      "subcategoria": "Higiene Bucal Diaria",
+      "segmento": "Escova Dental",
+      "subsegmento": "Escova Dental Tradicional"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é uma escova dentária pós-cirúrgica, que se enquadra melhor na categoria de Escova Dental Tradicional dentro do segmento de Higiene Bucal Diária no departamento de Higiene Pessoal. As outras categorias são menos adequadas, pois são para público infantil, escovas elétricas, ou acessórios para cabelo."
+    }
+  },
+  "78913547::Bombom Sonho de Valsa Tradicio::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Bombom",
+      "subsegmento": "Bombom Avulso"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um bombom avulso da marca Sonho de Valsa, que se encaixa perfeitamente na categoria Bomboniere > Chocolates > Bombom > Bombom Avulso, que tem o maior score heurístico entre as opções relacionadas a bombons."
+    }
+  },
+  "7896132126465::Pó Compacto Marchetti FPS 30 O::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Maquiagem",
+      "subcategoria": "Maquiagem Facial",
+      "segmento": "Po Compacto",
+      "subsegmento": "Po Compacto"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um pó compacto de maquiagem com FPS 30, fabricado pela Marchetti, claramente se encaixando na categoria de Maquiagem Facial, segmento Pó Compacto, subsegmento Pó Compacto. Essa categoria tem o maior score heurístico e corresponde exatamente à descrição do produto."
+    }
+  },
+  "751320013040::Sandalia Ortho Way Divers::": {
+    "taxonomy": {
+      "departamento": "Bazar",
+      "categoria": "Vestuario",
+      "subcategoria": "Calcados",
+      "segmento": "Sandalia",
+      "subsegmento": "Sandalia"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto é uma sandália da marca ORTHO WAY, que se encaixa claramente na categoria de calçados, especificamente sandálias, dentro do departamento de Bazar. Os demais candidatos são categorias relacionadas a beleza, cuidados pessoais, alimentos e medicamentos, que não correspondem ao tipo do produto."
+    }
+  },
+  "7896004744155::Osteoglic 1,5 g 30 Unidades Sache::SULFATO DE GLICOSAMINA": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Tarjado",
+      "subcategoria": "Tarjado Similar",
+      "segmento": "Osteoporose",
+      "subsegmento": "Sulfato De Glicosamina"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto é um medicamento tarjado similar contendo sulfato de glicosamina, indicado para osteoporose, o que corresponde exatamente à categoria e subcategoria do candidato taxonomy_2944, que possui o maior score heurístico e melhor correspondência com o princípio ativo e segmento do produto."
+    }
+  },
+  "4015400763680::Pampers Lenco Caricia Beb 48 Unidades::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Troca De Fralda",
+      "subcategoria": "Lenco Umedecido Infantil",
+      "segmento": "Lenco Umecido Infantil",
+      "subsegmento": "Lenco Umedecido Infantil Flowpack"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um lenço umedecido para bebês da marca Pampers, que se encaixa perfeitamente na categoria 'Infantil > Troca De Fralda > Lenco Umedecido Infantil > Lenco Umecido Infantil > Lenco Umedecido Infantil Flowpack'. As outras categorias são inadequadas, pois tratam de preservativos, maquiagem, absorventes ou outros produtos não relacionados a lenços umedecidos infantis."
+    }
+  },
+  "7891234563514::Unha Postica::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Manicure",
+      "subcategoria": "Acessorios Manicure",
+      "segmento": "Ornamento Unhas",
+      "subsegmento": "Unha Postica"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto 'Unha Postica' se encaixa perfeitamente na categoria 'Beleza E Cuidados > Manicure > Acessorios Manicure > Ornamento Unhas > Unha Postica', que tem o maior score heurístico (99) entre os candidatos apresentados."
+    }
+  },
+  "7895115564478::Seca Barriga 100 cápsulas::": {
+    "taxonomy": {
+      "departamento": "Fitness",
+      "categoria": "Nutricao Esportiva",
+      "subcategoria": "Pre-Treino Emagrecedores",
+      "segmento": "Emagrecedores",
+      "subsegmento": "Emagrecedor Capsulas"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'Seca Barriga 100 cápsulas' é um suplemento para emagrecimento, que se encaixa diretamente na categoria de 'Emagrecedor Capsulas' dentro do departamento Fitness e categoria Nutrição Esportiva, conforme o candidato taxonomy_760, que possui o maior score heurístico e corresponde exatamente ao tipo de produto."
+    }
+  },
+  "7791293032405::Rexona Deso Nutritive 150 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Desodorantes",
+      "subcategoria": "Desodorante Feminino",
+      "segmento": "Desodorante Feminino",
+      "subsegmento": "Desodorante Feminino Aerosol"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um desodorante feminino (Rexona Deso Nutritive 150 mL), portanto a categoria mais adequada entre os candidatos é 'Desodorante Feminino Aerosol' dentro do departamento 'Higiene Pessoal'."
+    }
+  },
+  "7791293032450::Rexona Deso Bamboo 150 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Desodorantes",
+      "subcategoria": "Desodorante Feminino",
+      "segmento": "Desodorante Feminino",
+      "subsegmento": "Desodorante Feminino Aerosol"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um desodorante feminino (Rexona Deso Bamboo 150 mL), que se encaixa diretamente na categoria de Desodorantes Femininos Aerosol dentro do departamento de Higiene Pessoal, conforme o candidato taxonomy_859. Os demais candidatos são inadequados, pois são categorias relacionadas a mamadeiras, cuidados com cabelos, maquiagem, alimentos, entre outros, que não correspondem ao tipo de produto."
+    }
+  },
+  "7897947613119::Voxx Whey Protein Morango 900 g::": {
+    "taxonomy": {
+      "departamento": "Fitness",
+      "categoria": "Nutricao Esportiva",
+      "subcategoria": "Ganho De Massa",
+      "segmento": "Hipercaloricos",
+      "subsegmento": "Whey Proteina"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um suplemento alimentar do tipo Whey Protein, indicado para ganho de massa muscular, portanto a categoria mais adequada é 'Fitness > Nutrição Esportiva > Ganho De Massa > Hipercalóricos > Whey Proteina'. Apesar de existir uma categoria similar com 'Whey Protein/Cafeína/Vitaminas E Minerais', a categoria 'Whey Proteina' é mais específica e adequada para o produto."
+    }
+  },
+  "7896007511617::Fralda Huggies Little::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Fralda Infantil",
+      "subcategoria": "Fralda Descartavel Infantil",
+      "segmento": "Fralda Infantil Intermediaria",
+      "subsegmento": "Fralda Infantil Intermediaria Pacote"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é uma fralda descartável infantil da marca Huggies, que se encaixa na categoria 'Fralda Infantil', subcategoria 'Fralda Descartavel Infantil'. Entre as opções disponíveis, a classificação mais adequada é 'Fralda Infantil Intermediaria Pacote' (taxonomy_1033), pois corresponde a fraldas descartáveis infantis em embalagem padrão, que é o caso típico do produto apresentado."
+    }
+  },
+  "78936911::Baton Garoto Morango 16 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Chocolate Barra",
+      "subsegmento": "Chocolate Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um Baton Garoto Morango, que é um tipo de chocolate em barra da marca Nestlé. Entre os candidatos, a categoria 'Bomboniere > Chocolates > Chocolate Barra' é a mais adequada para classificar este produto, pois ele não se enquadra em categorias de biscoitos, bebidas lácteas ou cuidados pessoais."
+    }
+  },
+  "7898142861701::Chocolate ao Leite com Cereal Crocante Tortuguita 100 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Barra Alimenticia",
+      "subcategoria": "Barra De Cereal",
+      "segmento": "Barra Cereal Unidade",
+      "subsegmento": "Barra Cereal Unidade Chocolate"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.8,
+      "candidateCount": 25,
+      "rationale": "O produto é um chocolate ao leite com cereal crocante, que se encaixa melhor na categoria 'Barra Alimenticia' > 'Barra De Cereal' > 'Barra Cereal Unidade' > 'Barra Cereal Unidade Chocolate'. As outras categorias são relacionadas a leite ou cuidados pessoais, que não correspondem ao produto."
+    }
+  },
+  "7896023705144::Supra Up A-Z 60CPS::": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Vitaminas E Minerais",
+      "subsegmento": "Vitamina A E D Defesa"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto Supra Up A-Z 60CPS, fabricado pela CATARINENSE, sugere ser um suplemento vitamínico, possivelmente multivitamínico, indicado para defesa e saúde geral. Entre os candidatos, a categoria 'Vitaminas E Minerais' com subsegmento 'Vitamina A E D Defesa' é a mais adequada, pois corresponde a suplementos vitamínicos OTC relacionados a vitaminas A, D e E, que são comuns em produtos de defesa imunológica."
+    }
+  },
+  "7896132120449::Blush Marchetti 07::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Maquiagem",
+      "subcategoria": "Maquiagem Facial",
+      "segmento": "Blush",
+      "subsegmento": "Blush"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto é um blush da marca Marchetti, que se encaixa claramente na categoria de Maquiagem Facial, segmento Blush. Entre os candidatos apresentados, o taxonomy_364 corresponde exatamente a essa classificação, com um score heurístico muito superior aos demais, indicando alta relevância e precisão para o produto."
+    }
+  },
+  "7896132120418::Blush MARCHETTI 04::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Maquiagem",
+      "subcategoria": "Maquiagem Facial",
+      "segmento": "Blush",
+      "subsegmento": "Blush"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é um blush da marca MARCHETTI, que se encaixa diretamente na categoria de Maquiagem Facial, segmento Blush, conforme a classificação do candidato taxonomy_364, que possui o maior score heurístico e corresponde exatamente ao tipo de produto."
+    }
+  },
+  "7896132120319::Duo Sombra 06::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Maquiagem",
+      "subcategoria": "Maquiagem Olhos",
+      "segmento": "Sombra",
+      "subsegmento": "Sombra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'Duo Sombra 06' é claramente um item de maquiagem para os olhos, especificamente sombra. Entre os candidatos, a categoria que melhor se encaixa é 'Maquiagem Olhos' com segmento e subsegmento 'Sombra', que corresponde exatamente ao tipo de produto."
+    }
+  },
+  "7898956544265::Nutrizinco 20 mL::": {
+    "taxonomy": {
+      "departamento": "Medicamentos",
+      "categoria": "Medicamento Otc",
+      "subcategoria": "Otc Marca",
+      "segmento": "Vitaminas E Minerais",
+      "subsegmento": "Zinco"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.91,
+      "candidateCount": 25,
+      "rationale": "O produto Nutrizinco é um suplemento de zinco, que se enquadra na categoria de Medicamento Otc, subcategoria Otc Marca, segmento Vitaminas E Minerais e subsegmento Zinco, conforme o candidato taxonomy_1382 que apresenta o maior score heurístico e corresponde exatamente ao tipo de produto."
+    }
+  },
+  "7896132122719::Duo Sombra 15::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Maquiagem",
+      "subcategoria": "Maquiagem Olhos",
+      "segmento": "Sombra",
+      "subsegmento": "Sombra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'Duo Sombra 15' é claramente um item de maquiagem para os olhos, especificamente sombra. A categoria 'Sombra' dentro de 'Maquiagem Olhos' é a mais adequada e possui o maior score heurístico, indicando alta relevância para o produto."
+    }
+  },
+  "7898468475224::Multivia 02 Vias::": {
+    "taxonomy": {
+      "departamento": "Bazar",
+      "categoria": "Casa E Utilidades",
+      "subcategoria": "Casa E Decoracao",
+      "segmento": "Utensilios Casa",
+      "subsegmento": "Utensilios Diversos"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto 'Multivia 02 Vias' parece ser um utensílio doméstico genérico, possivelmente relacionado a utilidades para casa. A categoria 'Utensilios Diversos' em 'Casa E Utilidades' no departamento 'Bazar' é a mais adequada entre as opções fornecidas, considerando o nome e a ausência de princípio ativo ou indicação clara para outras categorias."
+    }
+  },
+  "7896036516218::Neopan CANECA ALC Az 1621 130 mL::": {
+    "taxonomy": {
+      "departamento": "Bazar",
+      "categoria": "Casa E Utilidades",
+      "subcategoria": "Utilidades Cozinha",
+      "segmento": "Utensilios Cozinha",
+      "subsegmento": "Copo/Caneca/Garrafa Term"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é uma caneca de 130 mL, que se encaixa melhor na categoria de utensílios de cozinha, especificamente em copo/caneca/garrafa térmica dentro do departamento de Bazar, pois não é um produto infantil específico nem um item de higiene ou beleza."
+    }
+  },
+  "7896132122726::Duo Sombra 16::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Maquiagem",
+      "subcategoria": "Maquiagem Olhos",
+      "segmento": "Sombra",
+      "subsegmento": "Sombra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.99,
+      "candidateCount": 25,
+      "rationale": "O produto 'Duo Sombra 16' é claramente um item de maquiagem para os olhos, especificamente uma sombra. Entre os candidatos, o que melhor se encaixa é a categoria de 'Sombra' dentro de 'Maquiagem Olhos', que corresponde ao candidate_id 'taxonomy_396'. A alta pontuação heurística reforça essa escolha."
+    }
+  },
+  "7622300858797::Halls Mini Cereja 15 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Chocolate Barra",
+      "subsegmento": "Chocolate Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto 'Halls Mini Cereja 15 g' é um tipo de bala ou doce, que se enquadra melhor na categoria de Bomboniere, especificamente em Chocolates, pois não há uma categoria específica para balas ou doces na lista fornecida. A categoria 'Bomboniere > Chocolates' é a mais próxima e adequada entre os candidatos disponíveis."
+    }
+  },
+  "7896036516225::Neopan CANECA ALC RS 1622 130 mL::": {
+    "taxonomy": {
+      "departamento": "Bazar",
+      "categoria": "Casa E Utilidades",
+      "subcategoria": "Utilidades Cozinha",
+      "segmento": "Utensilios Cozinha",
+      "subsegmento": "Copo/Caneca/Garrafa Term"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é uma caneca de 130 mL da marca NEOPAN, que se encaixa melhor na categoria de utensílios de cozinha para uso geral, especificamente em copos/canecas/garrafas térmicas no departamento de Bazar, pois não é um produto infantil nem de higiene ou beleza."
+    }
+  },
+  "736532437969::Sabonete Íntimo Morango 220 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Cuidado Intimo Feminino",
+      "subcategoria": "Higiene Intima Feminina",
+      "segmento": "Sabonete Intimo",
+      "subsegmento": "Sabonete Intimo"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um sabonete íntimo feminino, indicado para higiene íntima, e o candidato taxonomy_833 corresponde exatamente à categoria 'Sabonete Intimo' dentro de 'Cuidado Intimo Feminino', que é a classificação mais precisa e adequada para este produto."
+    }
+  },
+  "7898936049568::Sebo de Carneiro Creme H 190 g::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Troca De Fralda",
+      "subcategoria": "Cuidado Assaduras",
+      "segmento": "Prevencao Assaduras",
+      "subsegmento": "Creme Prevencao Assaduras"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto 'Sebo de Carneiro Creme H 190 g' é um creme com finalidade de cuidado da pele, e entre as opções disponíveis, a categoria 'Creme Prevencao Assaduras' no departamento Infantil é a que mais se aproxima do uso tópico para proteção e cuidado da pele, apresentando o maior score heurístico (9). As outras categorias são menos relacionadas ao tipo de produto e uso indicado."
+    }
+  },
+  "7896036541319::Neopan Chupeta Tam1 Az 4131::": {
+    "taxonomy": {
+      "departamento": "Infantil",
+      "categoria": "Chupeta E Acessorios",
+      "subcategoria": "Chupetas",
+      "segmento": "Chupeta Comum",
+      "subsegmento": "Chupeta Comum Popular"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é uma chupeta comum da marca NEOPAN, indicada para o departamento infantil. Entre as opções, a categoria 'Chupeta Comum Popular' (taxonomy_976) é a mais adequada, pois corresponde exatamente ao tipo de produto descrito e possui o maior score heurístico, indicando maior compatibilidade."
+    }
+  },
+  "7898936049032::APINIL Íntimo UVA 200 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Preservativo E Lubrificante",
+      "subcategoria": "Lubrificante Intimo",
+      "segmento": "Lubrificante Intimo",
+      "subsegmento": "Lubrificante Intimo"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto 'APINIL Íntimo UVA 200 mL' é um lubrificante íntimo, conforme indicado pelo nome e volume, e se encaixa perfeitamente na categoria 'Lubrificante Intimo' dentro do departamento 'Higiene Pessoal'."
+    }
+  },
+  "822772100128::Uxi AMARELO+UNHA D GATO 60CPS::": {
+    "taxonomy": {
+      "departamento": "Dermocosmeticos",
+      "categoria": "Nutricosmetico",
+      "subcategoria": "Pele Cabelos  E Unha",
+      "segmento": "Pele Cabelos  E Unha",
+      "subsegmento": "Pele Cabelos  E Unha"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto 'Uxi AMARELO+UNHA D GATO 60CPS' é um suplemento natural relacionado a cuidados com unhas e saúde, o que se encaixa melhor na categoria de Dermocosméticos, Nutricosméticos, especificamente em Pele Cabelos E Unha. As outras categorias são mais voltadas para medicamentos vitamínicos ou acessórios de manicure, que não correspondem ao produto."
+    }
+  },
+  "7898374650043::Óleo de Menta 10 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Banho",
+      "subcategoria": "Gel De Banho",
+      "segmento": "Gel De Banho",
+      "subsegmento": "Oleo De Banho"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.82,
+      "candidateCount": 25,
+      "rationale": "O produto é um óleo de menta, que é comumente utilizado para banho e cuidados pessoais, encaixando-se melhor na categoria Higiene Pessoal > Banho > Gel De Banho > Gel De Banho > Óleo De Banho. As outras categorias são menos adequadas, pois o produto não é um suplemento esportivo, medicamento ou relacionado a outros segmentos listados."
+    }
+  },
+  "7898912178916::Kit Blond Platinum 2X 200 mL::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Tintura Cabelos",
+      "subcategoria": "Coloracao",
+      "segmento": "Coloracao Permanente",
+      "subsegmento": "Coloracao Permanente Kit"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.94,
+      "candidateCount": 25,
+      "rationale": "O produto 'Kit Blond Platinum 2X 200 mL' é um kit relacionado a cuidados com coloração de cabelos, o que corresponde à categoria 'Tintura Cabelos' e subcategoria 'Coloracao', segmento 'Coloracao Permanente' e subsegmento 'Coloracao Permanente Kit'. Essa categoria tem o maior score heurístico e é a mais adequada entre os candidatos fornecidos."
+    }
+  },
+  "7898292886241::Barra de Cereal Hersheys Briga::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Barra Alimenticia",
+      "subcategoria": "Barra De Cereal",
+      "segmento": "Barra Cereal Unidade",
+      "subsegmento": "Barra Cereal Unidade Chocolate"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.82,
+      "candidateCount": 25,
+      "rationale": "O produto é uma barra de cereal da marca Hersheys, que é um sabor de chocolate. A categoria 'Barra Cereal Unidade Chocolate' (taxonomy_48) é a mais adequada, pois combina o tipo de produto (barra de cereal) com o sabor (chocolate), apresentando o maior score heurístico entre as opções relacionadas."
+    }
+  },
+  "7896111917695::Esmalte Impala Gaia 7,5 mL::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Manicure",
+      "subcategoria": "Esmalte E Base",
+      "segmento": "Esmaltes",
+      "subsegmento": "Esmalte Cremoso"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 1,
+      "candidateCount": 25,
+      "rationale": "O produto é um esmalte cremoso da marca Impala, que se encaixa perfeitamente na categoria 'Esmalte Cremoso' dentro do segmento 'Esmaltes' da subcategoria 'Esmalte E Base' no departamento 'Beleza E Cuidados'. Esta categoria tem o maior score heurístico e corresponde exatamente ao tipo de produto."
+    }
+  },
+  "7896423401158::Snickers Amendoas 45 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Bomboniere",
+      "subcategoria": "Chocolates",
+      "segmento": "Chocolate Barra",
+      "subsegmento": "Chocolate Barra"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto é um chocolate da marca Snickers, que se enquadra claramente na categoria de Bomboniere > Chocolates > Chocolate Barra. As outras categorias são relacionadas a cuidados pessoais, medicamentos ou saúde, que não correspondem ao produto alimentício apresentado."
+    }
+  },
+  "736532438164::Sabonete Íntimo Aroeira 220 mL::": {
+    "taxonomy": {
+      "departamento": "Higiene Pessoal",
+      "categoria": "Cuidado Intimo Feminino",
+      "subcategoria": "Higiene Intima Feminina",
+      "segmento": "Sabonete Intimo",
+      "subsegmento": "Sabonete Intimo"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto é um sabonete íntimo feminino, indicado para higiene íntima, e o candidato taxonomy_833 corresponde exatamente à categoria 'Cuidado Intimo Feminino > Higiene Intima Feminina > Sabonete Intimo'. Além disso, possui o maior score heurístico entre os candidatos relacionados a sabonete íntimo."
+    }
+  },
+  "7897947612679::3X Protein Morango 300 g::": {
+    "taxonomy": {
+      "departamento": "Fitness",
+      "categoria": "Nutricao Esportiva",
+      "subcategoria": "Ganho De Massa",
+      "segmento": "Hipercaloricos",
+      "subsegmento": "Whey Proteina"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto '3X Protein Morango 300 g' é um suplemento proteico com sabor morango, indicado para ganho de massa muscular. Entre os candidatos, a categoria 'Fitness > Nutrição Esportiva > Ganho De Massa > Hipercalóricos > Whey Proteína' (taxonomy_755) é a mais adequada, pois corresponde a suplementos proteicos para ganho de massa, enquanto outras categorias são relacionadas a alimentos perecíveis, biscoitos ou produtos de higiene e beleza, que não condizem com o produto."
+    }
+  },
+  "7898936049902::Sportgel Gel Massageador 150 g::": {
+    "taxonomy": {
+      "departamento": "Beleza E Cuidados",
+      "categoria": "Cuidado Pele",
+      "subcategoria": "Cuidado Corpo E Maos",
+      "segmento": "Creme Massageador",
+      "subsegmento": "Gel Massageador"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.98,
+      "candidateCount": 25,
+      "rationale": "O produto é um gel massageador para uso corporal, o que corresponde diretamente à categoria 'Gel Massageador' dentro do segmento 'Creme Massageador' na subcategoria 'Cuidado Corpo E Maos' do departamento 'Beleza E Cuidados'. Essa categoria tem o maior score heurístico e é a mais adequada para o produto descrito."
+    }
+  },
+  "7897947612662::3X Protein Baunilha 300 g::": {
+    "taxonomy": {
+      "departamento": "Fitness",
+      "categoria": "Nutricao Esportiva",
+      "subcategoria": "Ganho De Massa",
+      "segmento": "Hipercaloricos",
+      "subsegmento": "Whey Protein/Cafeína/Vitaminas E Minerais"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.95,
+      "candidateCount": 25,
+      "rationale": "O produto '3X Protein Baunilha 300 g' é um suplemento alimentar voltado para nutrição esportiva, especificamente para ganho de massa muscular. Entre os candidatos, a categoria 'Fitness > Nutrição Esportiva > Ganho De Massa > Hipercalóricos > Whey Protein/Cafeína/Vitaminas E Minerais' é a mais adequada, pois corresponde ao tipo de produto (whey protein) e seu uso principal."
+    }
+  },
+  "7897947612655::3X Protein Chocolate 300 g::": {
+    "taxonomy": {
+      "departamento": "Alimentos",
+      "categoria": "Barra Alimenticia",
+      "subcategoria": "Barra De Proteina",
+      "segmento": "Barra Proteina Unidade",
+      "subsegmento": "Barra Proteina Unidade Chocolate"
+    },
+    "metadata": {
+      "source": "openai",
+      "confidence": 0.9,
+      "candidateCount": 25,
+      "rationale": "O produto '3X Protein Chocolate 300 g' é uma barra de proteína sabor chocolate, portanto se encaixa melhor na categoria 'Barra Alimenticia' > 'Barra De Proteina' > 'Barra Proteina Unidade' > 'Barra Proteina Unidade Chocolate'. Esta categoria é a mais específica e adequada entre os candidatos apresentados."
+    }
+  }
+}

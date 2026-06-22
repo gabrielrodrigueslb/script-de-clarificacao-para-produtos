@@ -1,0 +1,16 @@
+{
+  "name": "normalizador-farma-v14",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node src/testes.js",
+    "normalizar": "node src/index.js",
+    "publish:banco-unico": "node src/publish-banco-unico.js",
+    "publish:banco-unico:api": "node src/publish-banco-unico.js --source=api",
+    "validar:arvore": "node src/validar-arvore-mercadologica.js"
+  },
+  "dependencies": {
+    "dotenv": "latest",
+    "openai": "latest"
+  }
+}
