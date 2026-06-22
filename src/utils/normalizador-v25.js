@@ -112,13 +112,15 @@ function contextoSuplemento(original) {
 
 function contextoFralda(original) {
   const t = String(original || '').toUpperCase();
-  const comecaComoFralda = /^(FR|FD|FDR)[.\s]/.test(t) || t.startsWith('FD.') || t.startsWith('FDR.');
+  const comecaComoFralda = /^(FR|FD|FDR)[.\s]/.test(t) || /\b(FR|FD|FDR)\b/.test(t) || t.startsWith('FD.') || t.startsWith('FDR.');
   if (!comecaComoFralda) return false;
 
   return [
     'HUGGIES', 'PAMPERS', 'SMILINGUIDO', 'VIC BABY', 'CLASSIC BABY',
     'DIGUIFRAL', 'ANJINHOS', 'BIGFRAL', 'BIOFRAL', 'BABYSEC',
     'BEBE FELIZ', 'BEBÊ FELIZ', 'POM POM', 'POMPOM', 'TENA', 'MILI',
+    'MAMY POKO', 'MAMYPOKO', 'SAPEKA', 'PERSONAL BABY', 'CAPRICHO BABY',
+    'CREMER BABY', 'NATURAL BABY', 'TURMA DA MONICA', 'JUMBINHO',
     'BABY', 'FD.INF', 'GERIATR', 'GERI'
   ].some((p) => t.includes(p));
 }
@@ -390,6 +392,7 @@ function aplicarContextos(entrada) {
       .replace(/^\s*FDR\b[.\s]*/gi, 'Fralda ')
       .replace(/^\s*FD\b[.\s]*/gi, 'Fralda ')
       .replace(/^\s*FR\b[.\s]*/gi, 'Fralda ')
+      .replace(/\bFR\b/gi, 'Fralda')
       .replace(/\b(\d+)PX(\d+)FD\b/gi, '$1 Pacotes x $2 Fraldas')
       .replace(/\b(\d+)FD\b/gi, '$1 Fraldas')
       .replace(/\b(\d+)\s+Fardo\b/gi, '$1 Fraldas')

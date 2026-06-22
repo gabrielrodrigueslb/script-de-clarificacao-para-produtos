@@ -9,7 +9,7 @@ Projeto para:
 
 O projeto tem dois fluxos principais:
 - `src/index.js`: normaliza um arquivo local e grava um JSON final
-- `src/publish-banco-unico.js`: busca produtos de arquivo ou API Trier, classifica, consulta o Banco Unico e publica
+- `src/publish-banco-unico.js`: busca produtos de arquivo, API Trier ou Alpha 7, classifica, consulta o Banco Unico e publica
 
 ## Scripts disponiveis
 
@@ -18,6 +18,7 @@ npm run test
 npm run normalizar
 npm run publish:banco-unico
 npm run publish:banco-unico:api
+npm run publish:banco-unico:alpha7
 npm run validar:arvore -- <arquivo>
 ```
 
@@ -26,6 +27,7 @@ npm run validar:arvore -- <arquivo>
 - [src/index.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/index.js): fluxo simples de normalizacao + arvore
 - [src/publish-banco-unico.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/publish-banco-unico.js): fluxo completo para Banco Unico
 - [src/services/trier-products.client.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/services/trier-products.client.js): cliente da API Trier
+- [src/services/alpha7-products.client.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/services/alpha7-products.client.js): cliente Postgres do Alpha 7
 - [src/services/mercadological-tree.service.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/services/mercadological-tree.service.js): leitura e score da arvore
 - [src/services/mercadological-classifier.service.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/services/mercadological-classifier.service.js): decisao heuristica/IA da classificacao
 - [src/services/banco-unico.client.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/services/banco-unico.client.js): consulta e publicacao no Banco Unico
@@ -89,6 +91,24 @@ TRIER_PRODUTOS_TIMEOUT_MS=30000
 Observacao:
 - o script recebe o token puro e monta `Bearer ...` automaticamente
 
+### Alpha 7
+
+```env
+PRODUTOS_SOURCE_MODE=alpha7
+ALPHA7_DB_HOST=
+ALPHA7_DB_PORT=5432
+ALPHA7_DB_DATABASE=
+ALPHA7_DB_USER=
+ALPHA7_DB_PASSWORD=
+ALPHA7_DB_SCHEMA=public
+ALPHA7_PAGE_SIZE=100
+```
+
+Observacoes:
+- esse modo consulta `schema.embalagem`
+- a busca traz `codigobarras` como EAN e `descricao` como nome
+- a pagina usa `limit/offset` internamente ate consumir toda a base
+
 ### Banco Unico
 
 ```env
@@ -145,9 +165,10 @@ Campos importantes do resultado:
 
 Esse fluxo usa [src/publish-banco-unico.js](C:/Users/Gabriel/Downloads/normalizador-farma-completo-v25/src/publish-banco-unico.js).
 
-Ele pode usar duas origens:
+Ele pode usar tres origens:
 - `file`: um JSON local
 - `api`: API paginada da Trier
+- `alpha7`: banco Postgres do cliente no padrao Alpha 7
 
 O fluxo completo e:
 1. carregar produtos
@@ -199,25 +220,37 @@ Diferença:
 npm run publish:banco-unico -- --source=file --input=./src/data/catalogo-produtos-corrigido.json
 ```
 
-### 6. Processar apenas uma amostra
+### 6. Publicar usando Alpha 7
+
+```bash
+npm run publish:banco-unico:alpha7
+```
+
+### 7. Publicar usando Alpha 7 com credenciais na linha de comando
+
+```bash
+npm run publish:banco-unico -- --source=alpha7 --alpha7-host=HOST --alpha7-database=DATABASE --alpha7-user=USER --alpha7-password=SENHA --alpha7-schema=public
+```
+
+### 8. Processar apenas uma amostra
 
 ```bash
 npm run publish:banco-unico:api -- --limit=100
 ```
 
-### 7. Continuar a partir de um offset
+### 9. Continuar a partir de um offset
 
 ```bash
 npm run publish:banco-unico:api -- --offset=500 --limit=200
 ```
 
-### 8. Desligar IA da clarificacao do nome, mas manter IA da arvore
+### 10. Desligar IA da clarificacao do nome, mas manter IA da arvore
 
 ```bash
 npm run publish:banco-unico:api -- --disable-normalize-ai --force-taxonomy-ai
 ```
 
-### 9. Rodar sem IA nenhuma
+### 11. Rodar sem IA nenhuma
 
 ```bash
 npm run publish:banco-unico:api -- --disable-ai --disable-normalize-ai
@@ -227,13 +260,19 @@ npm run publish:banco-unico:api -- --disable-ai --disable-normalize-ai
 
 ```bash
 --input=PATH
---source=file|api
+--source=file|api|alpha7
 --source-api-url=URL
 --source-token=VAL
 --source-page-size=N
 --source-ativo=true|false
 --source-integracao-ecommerce=true|false
 --source-processa-custo-medio=true|false
+--alpha7-host=VAL
+--alpha7-port=N
+--alpha7-database=VAL
+--alpha7-user=VAL
+--alpha7-password=VAL
+--alpha7-schema=VAL
 --taxonomy=PATH
 --output=PATH
 --cache=PATH

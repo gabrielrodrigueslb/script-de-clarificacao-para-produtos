@@ -2,6 +2,7 @@ try { await import("dotenv/config"); } catch {}
 import fs from "fs/promises";
 import path from "path";
 import { BancoUnicoClient } from "./services/banco-unico.client.js";
+import { Alpha7ProductsClient } from "./services/alpha7-products.client.js";
 import { MercadologicalClassifierService } from "./services/mercadological-classifier.service.js";
 import { MercadologicalTreeService } from "./services/mercadological-tree.service.js";
 import { TrierProductsClient } from "./services/trier-products.client.js";
@@ -16,13 +17,19 @@ Uso:
 
 Opcoes:
   --input=PATH          Arquivo de entrada. Default: ./src/data/catalogo-produtos-corrigido.json
-  --source=file|api     Origem dos produtos. Default: file.
+  --source=file|api|alpha7 Origem dos produtos. Default: file.
   --source-api-url=URL  Endpoint paginado da API de produtos da Trier.
   --source-token=VAL    Token Bearer da API de origem.
   --source-page-size=N  Quantidade por pagina na API de origem. Default: 999.
   --source-ativo=BOOL   Filtro ativo da API de origem. Default: true.
   --source-integracao-ecommerce=BOOL Filtro integracaoEcommerce da API de origem. Default: true.
   --source-processa-custo-medio=BOOL Filtro processaCustoMedio da API de origem. Default: false.
+  --alpha7-host=VAL     Host do Postgres Alpha 7.
+  --alpha7-port=N       Porta do Postgres Alpha 7. Default: 5432.
+  --alpha7-database=VAL Database do Postgres Alpha 7.
+  --alpha7-user=VAL     Usuario do Postgres Alpha 7.
+  --alpha7-password=VAL Senha do Postgres Alpha 7.
+  --alpha7-schema=VAL   Schema do Postgres Alpha 7. Default: public.
   --taxonomy=PATH       CSV da arvore mercadologica.
   --output=PATH         JSON de saida preparado para o Banco Unico.
   --cache=PATH          Cache local de classificacao.
@@ -63,6 +70,12 @@ function parseArgs(argv) {
     sourceAtivo: process.env.TRIER_PRODUTOS_ATIVO ?? "true",
     sourceIntegracaoEcommerce: process.env.TRIER_PRODUTOS_INTEGRACAO_ECOMMERCE ?? "true",
     sourceProcessaCustoMedio: process.env.TRIER_PRODUTOS_PROCESSA_CUSTO_MEDIO ?? "false",
+    alpha7Host: process.env.ALPHA7_DB_HOST || "",
+    alpha7Port: Math.max(1, Number(process.env.ALPHA7_DB_PORT || 5432)),
+    alpha7Database: process.env.ALPHA7_DB_DATABASE || "",
+    alpha7User: process.env.ALPHA7_DB_USER || "",
+    alpha7Password: process.env.ALPHA7_DB_PASSWORD || "",
+    alpha7Schema: process.env.ALPHA7_DB_SCHEMA || "public",
     taxonomy: process.env.MERCADOLOGICAL_TREE_CSV_PATH || "./src/data/levantamento_arvore_mercadologica.csv",
     output: "./src/data/catalogo-produtos-banco-unico.json",
     cache: "./src/data/catalogo-produtos-banco-unico.cache.json",
@@ -102,6 +115,12 @@ function parseArgs(argv) {
     else if (arg.startsWith("--source-ativo=")) options.sourceAtivo = arg.slice("--source-ativo=".length);
     else if (arg.startsWith("--source-integracao-ecommerce=")) options.sourceIntegracaoEcommerce = arg.slice("--source-integracao-ecommerce=".length);
     else if (arg.startsWith("--source-processa-custo-medio=")) options.sourceProcessaCustoMedio = arg.slice("--source-processa-custo-medio=".length);
+    else if (arg.startsWith("--alpha7-host=")) options.alpha7Host = arg.slice("--alpha7-host=".length);
+    else if (arg.startsWith("--alpha7-port=")) options.alpha7Port = Number(arg.slice("--alpha7-port=".length));
+    else if (arg.startsWith("--alpha7-database=")) options.alpha7Database = arg.slice("--alpha7-database=".length);
+    else if (arg.startsWith("--alpha7-user=")) options.alpha7User = arg.slice("--alpha7-user=".length);
+    else if (arg.startsWith("--alpha7-password=")) options.alpha7Password = arg.slice("--alpha7-password=".length);
+    else if (arg.startsWith("--alpha7-schema=")) options.alpha7Schema = arg.slice("--alpha7-schema=".length);
     else if (arg.startsWith("--taxonomy=")) options.taxonomy = arg.slice("--taxonomy=".length);
     else if (arg.startsWith("--output=")) options.output = arg.slice("--output=".length);
     else if (arg.startsWith("--cache=")) options.cache = arg.slice("--cache=".length);
@@ -116,12 +135,16 @@ function parseArgs(argv) {
     else if (arg.startsWith("--authorization=")) options.authorization = arg.slice("--authorization=".length);
   }
 
-  if (!["file", "api"].includes(options.source)) {
-    throw new Error("--source precisa ser file ou api.");
+  if (!["file", "api", "alpha7"].includes(options.source)) {
+    throw new Error("--source precisa ser file, api ou alpha7.");
   }
 
   if (!Number.isInteger(options.sourcePageSize) || options.sourcePageSize <= 0) {
     throw new Error("--source-page-size precisa ser inteiro maior que zero.");
+  }
+
+  if (!Number.isInteger(options.alpha7Port) || options.alpha7Port <= 0) {
+    throw new Error("--alpha7-port precisa ser inteiro maior que zero.");
   }
 
   options.sourceAtivo = parseBooleanFlag(options.sourceAtivo, "--source-ativo");
@@ -209,6 +232,25 @@ async function loadSourceProducts(options, inputPath) {
       products,
       sourceLabel: client.baseUrl,
       sourceProviderLabel: "Trier",
+    };
+  }
+
+  if (options.source === "alpha7") {
+    const client = new Alpha7ProductsClient({
+      host: options.alpha7Host,
+      port: options.alpha7Port,
+      database: options.alpha7Database,
+      user: options.alpha7User,
+      password: options.alpha7Password,
+      schema: options.alpha7Schema,
+      pageSize: options.sourcePageSize,
+    });
+
+    const products = await client.fetchAllProducts();
+    return {
+      products,
+      sourceLabel: client.describeSource(),
+      sourceProviderLabel: "Alpha 7",
     };
   }
 
