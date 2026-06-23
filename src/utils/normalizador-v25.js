@@ -1,127 +1,299 @@
 function limpar(texto) {
-  return String(texto || "").replace(/\s+/g, " ").trim();
+  return String(texto || '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 const EXACT_NAME_OVERRIDES = new Map([
-  ["3014260318321", "Escova Dental Oral-B Advantage Artica Macia 35 1 Unidade"],
-  ["3014260318345", "Escova Dental Oral-B Advantage Artica Macia 1 Unidade"],
-  ["353885003315", "Monitor de Glicemia One Touch Ultra Mini Kit 1 Unidade"],
-  ["7896000650757", "Escova Dental Kuka Massageador Silicone Transparente 1 Unidade"],
-  ["4005808803132", "Hidratante Nivea Body Lotion Express 200 mL"],
-  ["7506195131640", "Creme Dental Oral-B Complete Limpeza Profunda 70 g"],
-  ["7896075709343", "Espatula de Cuticula Rosa Merheje Basic"],
-  ["7899026419025", "Esmalte Colorama Nutri Base Pro Fortalecimento 8 mL"],
-  ["7896512941923", "Sabonete Liquido Granado Bebe Camomila 250 mL"],
-  ["7891040029556", "Protetor Ocular Nexcare Infantil 20 Unidades"],
-  ["7501065922755", "Absorvente Always Ultrafino Seca com Abas 8 Unidades"],
-  ["7896007540624", "Absorvente Intimus Tripla Protecao Seca sem Abas 8 Unidades"],
-  ["7891528045504", "Creme Dental Sorriso Tripla Refrescancia 90 g"],
-  ["7898008554068", "Sabonete Liquido Folha Nativa Lavanda de Provence 500 mL"],
-  ["7896540789412", "Estetoscopio Rappaport Preto ER100"],
-  ["7898587764971", "Creme de Tratamento Elseve Reparacao Total 5 Extra Profundo 300 g"],
-  ["7891182016810", "Tintura Soft Color 366 Bordeaux Profundo"],
-  ["7899468504778", "Multifibras Pro Sabor Natural 500 g"],
-  ["7898934930028", "Escova Dental Green Galaxy Adulto Media"],
-  ["7898934930103", "Escova Dental Green Splash Adulto Macia 1 Unidade"],
-  ["7896094999329", "Vitasay Imune D Tripla Acao 10 Comprimidos"],
-  ["7899706197649", "Shampoo Elseve Cachos dos Sonhos 400 mL"],
-  ["7896314708236", "Saco para Lixo Bag Roll 100 Litros Preto 25 Unidades"],
-  ["7897424089451", "Marcador Pincel Atomico Pilot 1100-M Preto"],
-  ["7898934930899", "Escova Dental Green Enjoy Adulto Macia 1 Unidade"],
-  ["7898934930165", "Escova Dental Green Cool Adulto Macia 1 Unidade"],
-  ["7896020680413", "Copo Termico Mor Preto 360 mL"],
-  ["7896637022736", "Azulfin 500 mg 30 Comprimidos Revestidos"],
-  ["7898157722707", "Equipo Macro com Injetor Lateral 1 Unidade"],
-  ["7898184183885", "Protetor de Mamilo Fly Silicone"],
-  ["7898157726767", "Scalp Labor Import 23G 1 Unidade"],
-  ["7898075311526", "Magnazia Suspensao Oral 240 mL"],
-  ["7898422491024", "Shampoo Natura Ekos Castanha Refil"],
-  ["7896641800757", "Eparema 12 Flaconetes 10 mL"],
-  ["7896096907605", "Removedor de Esmalte Oleo de Banana Maru 40 mL"],
-  ["7898008550374", "Condicionador Folha Nativa Ceramidas 1,99 L"],
-  ["7898162880003", "Fralda Sapeka P 10 Unidades"],
-  ["7891024027134", "Kit Creme Dental Sorriso Dentes Brancos Leve 15 Pague 12 90 g"],
-  ["7891055325834", "Escova Dental Condor Antibac Maxil Extra Macia"],
-  ["7891055325803", "Escova Dental Condor Antibac Maxil Macia"],
-  ["7891055325810", "Escova Dental Condor Antibac Maxil Media"],
-  ["3360372058861", "Giorgio Armani Acqua Di Gio Eau de Toilette 50 mL"],
-  ["7894164001187", "Fluxoliv 100 mg 45 Comprimidos"],
-  ["7896641805653", "Neosaldina 4 Drageas"],
-  ["7896714215426", "Magnostase 2 mg 4 Comprimidos"],
-  ["7896360000957", "Rubralong 30 Comprimidos"],
-  ["8411061607169", "Carolina Herrera CH Eau de Toilette 50 mL"],
-  ["7897517930103", "Dosador de Acetona Vertix 180 mL"],
-  ["7898916841779", "Ampola Capilar Relvazon Ceramidas 10 mL"],
-  ["7898916841731", "Ampola Capilar Relvazon Vitamina E 10 mL"],
-  ["7898142861701", "Chocolate ao Leite com Cereal Crocante Tortuguita 100 g"],
-  ["7895296278010", "Onimorf 50 mg/mL Esmalte 2,5 mL + 10 Espatulas + 30 Lixas + 30 Compressas"]
+  ['3014260318321', 'Escova Dental Oral-B Advantage Artica Macia 35 1 Unidade'],
+  ['3014260318345', 'Escova Dental Oral-B Advantage Artica Macia 1 Unidade'],
+  ['353885003315', 'Monitor de Glicemia One Touch Ultra Mini Kit 1 Unidade'],
+  [
+    '7896000650757',
+    'Escova Dental Kuka Massageador Silicone Transparente 1 Unidade',
+  ],
+  ['4005808803132', 'Hidratante Nivea Body Lotion Express 200 mL'],
+  ['7506195131640', 'Creme Dental Oral-B Complete Limpeza Profunda 70 g'],
+  ['7896075709343', 'Espatula de Cuticula Rosa Merheje Basic'],
+  ['7899026419025', 'Esmalte Colorama Nutri Base Pro Fortalecimento 8 mL'],
+  ['7896512941923', 'Sabonete Liquido Granado Bebe Camomila 250 mL'],
+  ['7891040029556', 'Protetor Ocular Nexcare Infantil 20 Unidades'],
+  ['7501065922755', 'Absorvente Always Ultrafino Seca com Abas 8 Unidades'],
+  [
+    '7896007540624',
+    'Absorvente Intimus Tripla Protecao Seca sem Abas 8 Unidades',
+  ],
+  ['7891528045504', 'Creme Dental Sorriso Tripla Refrescancia 90 g'],
+  ['7898008554068', 'Sabonete Liquido Folha Nativa Lavanda de Provence 500 mL'],
+  ['7896540789412', 'Estetoscopio Rappaport Preto ER100'],
+  [
+    '7898587764971',
+    'Creme de Tratamento Elseve Reparacao Total 5 Extra Profundo 300 g',
+  ],
+  ['7891182016810', 'Tintura Soft Color 366 Bordeaux Profundo'],
+  ['7899468504778', 'Multifibras Pro Sabor Natural 500 g'],
+  ['7898934930028', 'Escova Dental Green Galaxy Adulto Media'],
+  ['7898934930103', 'Escova Dental Green Splash Adulto Macia 1 Unidade'],
+  ['7896094999329', 'Vitasay Imune D Tripla Acao 10 Comprimidos'],
+  ['7899706197649', 'Shampoo Elseve Cachos dos Sonhos 400 mL'],
+  ['7896314708236', 'Saco para Lixo Bag Roll 100 Litros Preto 25 Unidades'],
+  ['7897424089451', 'Marcador Pincel Atomico Pilot 1100-M Preto'],
+  ['7898934930899', 'Escova Dental Green Enjoy Adulto Macia 1 Unidade'],
+  ['7898934930165', 'Escova Dental Green Cool Adulto Macia 1 Unidade'],
+  ['7896020680413', 'Copo Termico Mor Preto 360 mL'],
+  ['7896637022736', 'Azulfin 500 mg 30 Comprimidos Revestidos'],
+  ['7898157722707', 'Equipo Macro com Injetor Lateral 1 Unidade'],
+  ['7898184183885', 'Protetor de Mamilo Fly Silicone'],
+  ['7898157726767', 'Scalp Labor Import 23G 1 Unidade'],
+  ['7898075311526', 'Magnazia Suspensao Oral 240 mL'],
+  ['7898422491024', 'Shampoo Natura Ekos Castanha Refil'],
+  ['7896641800757', 'Eparema 12 Flaconetes 10 mL'],
+  ['7896096907605', 'Removedor de Esmalte Oleo de Banana Maru 40 mL'],
+  ['7898008550374', 'Condicionador Folha Nativa Ceramidas 1,99 L'],
+  ['7898162880003', 'Fralda Sapeka P 10 Unidades'],
+  [
+    '7891024027134',
+    'Kit Creme Dental Sorriso Dentes Brancos Leve 15 Pague 12 90 g',
+  ],
+  ['7891055325834', 'Escova Dental Condor Antibac Maxil Extra Macia'],
+  ['7891055325803', 'Escova Dental Condor Antibac Maxil Macia'],
+  ['7891055325810', 'Escova Dental Condor Antibac Maxil Media'],
+  ['3360372058861', 'Giorgio Armani Acqua Di Gio Eau de Toilette 50 mL'],
+  ['7894164001187', 'Fluxoliv 100 mg 45 Comprimidos'],
+  ['7896641805653', 'Neosaldina 4 Drageas'],
+  ['7896714215426', 'Magnostase 2 mg 4 Comprimidos'],
+  ['7896360000957', 'Rubralong 30 Comprimidos'],
+  ['8411061607169', 'Carolina Herrera CH Eau de Toilette 50 mL'],
+  ['7897517930103', 'Dosador de Acetona Vertix 180 mL'],
+  ['7898916841779', 'Ampola Capilar Relvazon Ceramidas 10 mL'],
+  ['7898916841731', 'Ampola Capilar Relvazon Vitamina E 10 mL'],
+  ['7898142861701', 'Chocolate ao Leite com Cereal Crocante Tortuguita 100 g'],
+  [
+    '7895296278010',
+    'Onimorf 50 mg/mL Esmalte 2,5 mL + 10 Espatulas + 30 Lixas + 30 Compressas',
+  ],
+  ['7899026456082', 'Maquiagem Mascara para Cilios Maybelline Colossal 9,2 mL'],
+  ['7899026496903', 'Maquiagem Mascara para Cilios Maybelline Black Smudge'],
+  ['7898929780805', 'Sorvete MB Abacaxi ao Vinho 1 L'],
+  ['7893249245645', 'Sandalia Havaianas Kids Max Herois Verde Folhagem'],
+  ['7893249171500', 'Sandalia Havaianas Kids Lion King Amarelo Banana'],
+  ['7893249171517', 'Sandalia Havaianas Kids Lion King Amarelo Banana'],
+  ['7890541755001', 'Sandalia Havaianas Top Netflix Areia 43/44'],
+  ['7898100320912', 'Fralda Kisses Master Adulto XG 7 Unidades'],
+  ['1230000074100', 'Mascara Cirurgica Descartavel Sol-Millennium 10 Unidades'],
+  ['1220000290068', 'Mascara Cirurgica Descartavel Sol-Millennium 50 Unidades'],
+  ['1900161624390', 'Bico Mamadeira MAM Fluxo Rapido 4+ Meses Ref 1336'],
+  ['9001616243943', 'Bico Mamadeira MAM Fluxo Rapido 4+ Meses Ref 1336'],
+  ['9001616244018', 'Mamadeira MAM First Bottle Boys 260 mL Ref 4663'],
+  [
+    '7898211130226',
+    'Bolinho Pelaggio Disney Sabor Chocolate com Recheio de Chocolate 40 g',
+  ],
+  [
+    '7898211130219',
+    'Bolinho Pelaggio Disney Sabor Baunilha com Recheio de Morango 40 g',
+  ],
+  ['7891200016174', 'Cola Super Bonder 3 g Leve 2 Pague 1'],
+  ['7890006250003', 'Plantagold Psyllium Sabor Laranja 5 g 30 Saches'],
+  ['7898936049087', 'Sabonete Intimo Apinil Algodao Doce e Chiclete 200 mL'],
+  ['736532438089', 'Deo Colonia Soul Invict 50 mL'],
+  ['7898936049049', 'Sabonete Intimo Apinil Maracuja 200 mL'],
+  ['4005808593101', 'Sabonete Liquido Nivea Pearl & Beauty 250 mL'],
+  ['4005808593118', 'Sabonete Liquido Nivea Creme Soft 250 mL'],
+  ['4005808558377', 'Nivea Sun Oleo Bronzeador FPS 4 200 mL'],
+  ['4005808565306', 'Nivea Men Gel Limpeza e Barbear Arctic Freeze'],
+  ['4005808612765', 'Desodorante Nivea Roll On Leve 3 Pague 2 Dry Impact'],
+  ['4005808580415', 'Locao Hidratante Nivea Body Happy Time 200 mL'],
+  ['7891022101287', 'Desinfetante Kalipto Eucalipto 2 L'],
+  ['4005808628117', 'Sabonete Liquido Nivea Men Sport 250 mL'],
+  ['4005808627356', 'Sabonete Liquido Nivea Water Lily & Oil 250 mL'],
+  ['4005808617807', 'Locao Pos-Barba Nivea Silver Protect + Mini Espuma'],
+  ['4005808612741', 'Kit Nivea Body Milk Pele Extra Seca 200 mL 2 Unidades'],
+  ['4005808619016', 'Nivea Sun Locao Light Feeling FPS 15 200 mL'],
+  ['4005808629510', 'Kit Nivea Body Milk Leve 2 Locoes Hidratantes Gratis Sabonete Liquido'],
+  ['4005808629930', 'Kit Nivea Sun Facial Light Feeling FPS 60 + Protetor Labial FPS 10'],
+  ['4005808641901', 'Kit Nivea Sun Light Feeling FPS 30 + Protetor Facial'],
+  ['4005808641925', 'Kit Nivea Sun Protect & Bronze FPS 30 + Protetor Labial FPS 30'],
+  ['4005808712106', 'Kit Locao Hidratante Nivea Soft Milk 200 mL 2 Unidades + Desodorante'],
+  ['4005808691692', 'Kit Nivea Protetor Facial FPS 60 + Gel Revitalizante'],
+  ['4005808646333', 'Kit Nivea 2 Locoes Hidratantes Soft Milk + Desodorante Icy Kiss'],
+  ['4005808712113', 'Kit Nivea Firmadora Leve 2 Locoes Hidratantes Gratis Creme Maos Q10'],
+  ['4005808691814', 'Kit Locao Hidratante Nivea Lotion Express 200 mL 2 Unidades'],
+  ['4005808716296', 'Kit Nivea Protetor Facial FPS 30 + Hidratante Soft Milk'],
+  ['4005808636426', 'Desodorante Nivea Roll On Dry Comfort 50 mL'],
+  ['5060943222285', 'GAcMed B Plus Sabor Baunilha 500 g'],
+  ['5425017730712', 'Perfume New Brand Oh Light for Women Eau de Parfum 100 mL'],
+  ['5425017732112', 'Perfume Cuba Gold for Men Eau de Toilette 35 mL'],
+  ['5425017732129', 'Perfume Cuba Blue for Men Eau de Toilette 35 mL'],
+  ['5425017732136', 'Perfume Cuba Red for Men Eau de Toilette 35 mL'],
+  ['5425017732143', 'Perfume Cuba Orange for Men Eau de Toilette 35 mL'],
+  ['5425017732150', 'Perfume Cuba Black for Men Eau de Toilette 35 mL'],
+  ['5425017732167', 'Perfume Cuba Grey for Men Eau de Toilette 35 mL'],
+  ['5425017732174', 'Perfume Cuba Green for Men Eau de Toilette 35 mL'],
+  ['5425017732181', 'Perfume Cuba Brown for Men Eau de Toilette 35 mL'],
+  ['5425017732198', 'Perfume Cuba Jungle Tiger for Women Eau de Parfum 35 mL'],
+  ['5425017732211', 'Perfume Cuba Jungle Zebra for Women Eau de Parfum 35 mL'],
+  ['5425017732839', 'Perfume Cuba Brazil Copacabana for Men Eau de Toilette 35 mL'],
+  ['5425017732846', 'Perfume Cuba Brazil Copacabana for Women Eau de Parfum 35 mL'],
+  ['5425017732860', 'Perfume Cuba Brazil Carnaval for Women Eau de Parfum 35 mL'],
+  ['5425017732877', 'Perfume Cuba Mexico Maya for Men Eau de Toilette 35 mL'],
+  ['5425017732884', 'Perfume Cuba Mexico Maya for Women Eau de Parfum 35 mL'],
+  ['5425017732891', 'Perfume Cuba Mexico Cactus for Men Eau de Toilette 35 mL'],
+  ['5425017732907', 'Perfume Cuba Mexico Cactus for Women Eau de Parfum 35 mL'],
+  ['5425017733607', 'Perfume Cuba City Hollywood for Men Eau de Toilette 35 mL'],
+  ['5425017733614', 'Perfume Cuba City New York for Men Eau de Toilette 35 mL'],
+  ['5425017733621', 'Perfume Cuba City Las Vegas for Men Eau de Toilette 35 mL'],
+  ['5425017733645', 'Perfume Cuba City Hollywood for Women Eau de Parfum 35 mL'],
+  ['5425017733652', 'Perfume Cuba City New York for Women Eau de Parfum 35 mL'],
+  ['5425017733669', 'Perfume Cuba City Las Vegas for Women Eau de Parfum 35 mL'],
+  ['5425017733676', 'Perfume Cuba City Miami for Women Eau de Parfum 35 mL'],
+  ['7793742002519', 'Dermaglos Emulsao Pos-Solar Hidratante Reparadora 300 mL'],
+  ['7793742002816', 'Dermaglos Gel Pos-Solar Refrescante 200 g'],
+  ['7793742003318', 'Dermaglos Protetor Solar em Spray FPS 20 150 mL'],
+  ['7793742003226', 'Dermaglos Protetor Solar FPS 45 Creme 150 g'],
+  ['7793742003264', 'Dermaglos Protetor Solar FPS 65 Creme 90 g'],
+  ['7793742003325', 'Dermaglos Protetor Solar em Spray FPS 10 150 mL'],
+  ['7793742003462', 'Dermaglos Protetor Solar FPS 4 Emulsao 250 mL'],
+  ['7793742003479', 'Dermaglos Protetor Solar FPS 8 Emulsao 250 mL'],
+  ['7793742003486', 'Dermaglos Protetor Solar FPS 15 Emulsao 250 mL'],
+  ['7793742003493', 'Dermaglos Protetor Solar FPS 20 Emulsao 250 mL'],
+  ['7793742003509', 'Dermaglos Protetor Solar FPS 30 Emulsao 250 mL'],
+  ['7793742003516', 'Dermaglos Protetor Solar FPS 40 Emulsao 250 mL'],
+  ['7793742005008', 'Dermaglos Facial Leche de Limpeza Ativa 200 mL'],
+  ['7793742005015', 'Dermaglos Facial Tonico Hidratante 200 mL'],
+  ['7793742007323', 'Dermaglos Creme Corporal Hidratacao Profunda 175 g'],
+  ['7793742007569', 'Dermaglos Emulsao Corporal Hidratacao Profunda 300 mL'],
+  ['7793742007576', 'Dermaglos Facial Creme Nutritivo de Noite 70 g'],
+  ['7793742007897', 'Dermaglos Facial Creme Hidratante de Dia FPS 12 50 g'],
+  ['7793742007903', 'Dermaglos Facial Emulsao Hidratante de Dia FPS 12 75 mL'],
+  ['7793742007910', 'Dermaglos Creme para Maos e Unhas 50 g'],
+  ['7793742102639', 'Dermaglos Protetor Labial Incolor FPS 25 3,4 g'],
+  ['7793742103254', 'Dermaglos Protetor Solar Facial FPS 30 Creme 50 g'],
 ]);
 
 function protegerPontosNumericos(texto) {
-  return texto.replace(/(\d)\.(\d)/g, "$1__PONTO__$2");
+  return texto.replace(/(\d)\.(\d)/g, '$1__PONTO__$2');
 }
 
 function restaurarPontosNumericos(texto) {
-  return texto.replace(/__PONTO__/g, ".");
+  return texto.replace(/__PONTO__/g, '.');
 }
 
 function titleCase(texto) {
-  const manter = new Set(["mg", "mL", "mg/mL", "mg/g", "mcg", "g", "kg", "UI", "MFP", "A.I.", "OX"]);
-  const minusculas = new Set(["de", "do", "da", "dos", "das", "e", "com", "para"]);
+  const manter = new Set([
+    'mg',
+    'mL',
+    'mg/mL',
+    'mg/g',
+    'mcg',
+    'g',
+    'kg',
+    'UI',
+    'MFP',
+    'A.I.',
+    'OX',
+  ]);
+  const minusculas = new Set([
+    'de',
+    'do',
+    'da',
+    'dos',
+    'das',
+    'e',
+    'com',
+    'para',
+  ]);
 
   return limpar(texto)
-    .split(" ")
+    .split(' ')
     .map((p, i) => {
       if (manter.has(p)) return p;
       if (/^\d/.test(p)) return p;
-      if (p.includes("/") || p.includes("+")) return p;
+      if (p.includes('/') || p.includes('+')) return p;
       const lower = p.toLowerCase();
       if (i > 0 && minusculas.has(lower)) return lower;
       return p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
     })
-    .join(" ")
-    .replace(/\bMl\b/g, "mL")
-    .replace(/\bMg\b/g, "mg")
-    .replace(/\bMcg\b/g, "mcg")
-    .replace(/\bKg\b/g, "kg")
-    .replace(/\bG\b/g, "g")
-    .replace(/\bAçucar\b/g, "Açúcar")
-    .replace(/\bAcucar\b/g, "Açúcar")
-    .replace(/\bRapida\b/g, "Rápida")
-    .replace(/\bForca\b/g, "Força")
-    .replace(/\bSensivel\b/g, "Sensível")
-    .replace(/\bRecarregavel\b/g, "Recarregável")
-    .replace(/\bLiquido\b/g, "Líquido")
-    .replace(/\bSodico\b/g, "Sódico")
-    .replace(/\bDermatologico\b/g, "Dermatológico")
-    .replace(/\bDermatologica\b/g, "Dermatológica")
-    .replace(/\bDrageas\b/g, "Drágeas")
-    .replace(/\bCapsulas\b/g, "Cápsulas")
-    .replace(/\bCapsula\b/g, "Cápsula")
-    .replace(/\bPessego\b/g, "Pêssego")
-    .replace(/\bMaca\b/g, "Maçã")
-    .replace(/\bPiui\b/g, "Piuí")
-    .replace(/\bImedia\b/g, "Imédia");
+    .join(' ')
+    .replace(/\bMl\b/g, 'mL')
+    .replace(/\bMg\b/g, 'mg')
+    .replace(/\bMcg\b/g, 'mcg')
+    .replace(/\bKg\b/g, 'kg')
+    .replace(/\bG\b/g, 'g')
+    .replace(/\bAçucar\b/g, 'Açúcar')
+    .replace(/\bAcucar\b/g, 'Açúcar')
+    .replace(/\bRapida\b/g, 'Rápida')
+    .replace(/\bForca\b/g, 'Força')
+    .replace(/\bSensivel\b/g, 'Sensível')
+    .replace(/\bRecarregavel\b/g, 'Recarregável')
+    .replace(/\bLiquido\b/g, 'Líquido')
+    .replace(/\bSodico\b/g, 'Sódico')
+    .replace(/\bDermatologico\b/g, 'Dermatológico')
+    .replace(/\bDermatologica\b/g, 'Dermatológica')
+    .replace(/\bDrageas\b/g, 'Drágeas')
+    .replace(/\bCapsulas\b/g, 'Cápsulas')
+    .replace(/\bCapsula\b/g, 'Cápsula')
+    .replace(/\bPessego\b/g, 'Pêssego')
+    .replace(/\bMaca\b/g, 'Maçã')
+    .replace(/\bPiui\b/g, 'Piuí')
+    .replace(/\bImedia\b/g, 'Imédia');
 }
 
 function contextoSuplemento(original) {
-  const t = String(original || "").toUpperCase();
+  const t = String(original || '').toUpperCase();
   if (/\b(CR|CRE|MASC)\.?\s*CAP\b/.test(t)) return false;
-  return ["WHEY", "SH.MASS", "MASS SH", "MALTODEXTRIN", "BARRA PROT", "BAD BOY", "BEST WHEY", "NUTRI WHEY", "TOP WHEY"].some(p => t.includes(p));
+  return [
+    'WHEY',
+    'SH.MASS',
+    'MASS SH',
+    'MALTODEXTRIN',
+    'BARRA PROT',
+    'BAD BOY',
+    'BEST WHEY',
+    'NUTRI WHEY',
+    'TOP WHEY',
+  ].some((p) => t.includes(p));
 }
 
 function contextoFralda(original) {
   const t = String(original || '').toUpperCase();
-  const comecaComoFralda = /^(FR|FD|FDR)[.\s]/.test(t) || /\b(FR|FD|FDR)\b/.test(t) || t.startsWith('FD.') || t.startsWith('FDR.');
+  const comecaComoFralda =
+    /^(FR|FD|FDR)[.\s]/.test(t) ||
+    /\b(FR|FD|FDR)\b/.test(t) ||
+    t.startsWith('FD.') ||
+    t.startsWith('FDR.');
   if (!comecaComoFralda) return false;
 
   return [
-    'HUGGIES', 'PAMPERS', 'SMILINGUIDO', 'VIC BABY', 'CLASSIC BABY',
-    'DIGUIFRAL', 'ANJINHOS', 'BIGFRAL', 'BIOFRAL', 'BABYSEC',
-    'BEBE FELIZ', 'BEBÊ FELIZ', 'POM POM', 'POMPOM', 'TENA', 'MILI',
-    'MAMY POKO', 'MAMYPOKO', 'SAPEKA', 'PERSONAL BABY', 'CAPRICHO BABY',
-    'CREMER BABY', 'NATURAL BABY', 'TURMA DA MONICA', 'JUMBINHO',
-    'BABY', 'FD.INF', 'GERIATR', 'GERI'
+    'HUGGIES',
+    'PAMPERS',
+    'SMILINGUIDO',
+    'VIC BABY',
+    'CLASSIC BABY',
+    'DIGUIFRAL',
+    'ANJINHOS',
+    'BIGFRAL',
+    'BIOFRAL',
+    'BABYSEC',
+    'BEBE FELIZ',
+    'BEBÊ FELIZ',
+    'POM POM',
+    'POMPOM',
+    'TENA',
+    'MILI',
+    'MAMY POKO',
+    'MAMYPOKO',
+    'SAPEKA',
+    'PERSONAL BABY',
+    'CAPRICHO BABY',
+    'CREMER BABY',
+    'NATURAL BABY',
+    'TURMA DA MONICA',
+    'JUMBINHO',
+    'BABY',
+    'FD.INF',
+    'GERIATR',
+    'GERI',
   ].some((p) => t.includes(p));
 }
 
@@ -129,260 +301,386 @@ function normalizarUnidadesEQuantidades(texto) {
   let s = texto;
 
   // Dosagem composta com três números e unidade final: 300+35+50MG
-  s = s.replace(/(\d+(?:,\d+)?)\+(\d+(?:,\d+)?)\+(\d+(?:,\d+)?)\s*MG\b/gi, '$1 mg + $2 mg + $3 mg');
+  s = s.replace(
+    /(\d+(?:,\d+)?)\+(\d+(?:,\d+)?)\+(\d+(?:,\d+)?)\s*MG\b/gi,
+    '$1 mg + $2 mg + $3 mg',
+  );
 
   // Dosagem composta com segunda parte em concentração: 3MG+3MG/ML
-  s = s.replace(/(\d+(?:,\d+)?)MG\+(\d+(?:,\d+)?)\s*MG\/ML\b/gi, '$1 mg + $2 mg/mL');
+  s = s.replace(
+    /(\d+(?:,\d+)?)MG\+(\d+(?:,\d+)?)\s*MG\/ML\b/gi,
+    '$1 mg + $2 mg/mL',
+  );
 
   // Dosagem composta com unidades nos dois lados: 1MG+0,250MG
-  s = s.replace(/(\d+(?:,\d+)?)(MG|MCG|G|ML|UI)\+(\d+(?:,\d+)?)(MG|MCG|G|ML|UI)/gi, (_, a, ua, b, ub) => {
-    const mapa = { MG: "mg", MCG: "mcg", G: "g", ML: "mL", UI: "UI" };
-    return `${a} ${mapa[ua.toUpperCase()]} + ${b} ${mapa[ub.toUpperCase()]}`;
-  });
+  s = s.replace(
+    /(\d+(?:,\d+)?)(MG|MCG|G|ML|UI)\+(\d+(?:,\d+)?)(MG|MCG|G|ML|UI)/gi,
+    (_, a, ua, b, ub) => {
+      const mapa = { MG: 'mg', MCG: 'mcg', G: 'g', ML: 'mL', UI: 'UI' };
+      return `${a} ${mapa[ua.toUpperCase()]} + ${b} ${mapa[ub.toUpperCase()]}`;
+    },
+  );
 
   // Dosagem composta com unidade implícita: 500+125MG
-  s = s.replace(/(\d+(?:,\d+)?)\+(\d+(?:,\d+)?)(MG|MCG|G|ML|UI)/gi, (_, a, b, u) => {
-    const mapa = { MG: "mg", MCG: "mcg", G: "g", ML: "mL", UI: "UI" };
-    const unidade = mapa[u.toUpperCase()];
-    return `${a} ${unidade} + ${b} ${unidade}`;
-  });
+  s = s.replace(
+    /(\d+(?:,\d+)?)\+(\d+(?:,\d+)?)(MG|MCG|G|ML|UI)/gi,
+    (_, a, b, u) => {
+      const mapa = { MG: 'mg', MCG: 'mcg', G: 'g', ML: 'mL', UI: 'UI' };
+      const unidade = mapa[u.toUpperCase()];
+      return `${a} ${unidade} + ${b} ${unidade}`;
+    },
+  );
 
   s = s
-    .replace(/(\d+(?:,\d+)?)MG\/ML/gi, "$1 mg/mL")
-    .replace(/(\d+(?:,\d+)?)MG\/G/gi, "$1 mg/g")
-    .replace(/C\/(\d+(?:,\d+)?)\s*ML\b/gi, "$1 mL")
-    .replace(/C\/(\d+(?:,\d+)?)\s*KG\b/gi, "$1 kg")
-    .replace(/C\/(\d+(?:,\d+)?)\s*GR\b/gi, "$1 g")
-    .replace(/C\/(\d+(?:,\d+)?)\s*G\b/gi, "$1 g")
-    .replace(/C\/(\d+(?:,\d+)?)\s*MG\b/gi, "$1 mg")
-    .replace(/C\/(\d+(?:,\d+)?)\s*MCG\b/gi, "$1 mcg")
-    .replace(/(\d+(?:,\d+)?)MG\b/gi, "$1 mg")
-    .replace(/(\d+(?:,\d+)?)MCG\b/gi, "$1 mcg")
-    .replace(/(\d+(?:,\d+)?)ML\b/gi, "$1 mL")
-    .replace(/(\d+(?:,\d+)?)KG\b/gi, "$1 kg")
-    .replace(/(\d+(?:,\d+)?)GR\b/gi, "$1 g")
-    .replace(/(\d+(?:,\d+)?)G\b/g, "$1 g")
-    .replace(/(\d+(?:,\d+)?)K\b/gi, "$1 kg")
-    .replace(/\b(\d+)\s*FPS\b/gi, "FPS $1")
-    .replace(/\bFPS\s*(\d+)\b/gi, "FPS $1")
-    .replace(/\b(\d+)CPR?\b/gi, "$1 Comprimidos")
-    .replace(/\b(\d+)COMP\b/gi, "$1 Comprimidos")
-    .replace(/\b(\d+)CAPS?\b/gi, "$1 Cápsulas")
+    .replace(/(\d+(?:,\d+)?)MG\/ML/gi, '$1 mg/mL')
+    .replace(/(\d+(?:,\d+)?)MG\/G/gi, '$1 mg/g')
+    .replace(/C\/(\d+(?:,\d+)?)\s*ML\b/gi, '$1 mL')
+    .replace(/C\/(\d+(?:,\d+)?)\s*KG\b/gi, '$1 kg')
+    .replace(/C\/(\d+(?:,\d+)?)\s*GR\b/gi, '$1 g')
+    .replace(/C\/(\d+(?:,\d+)?)\s*G\b/gi, '$1 g')
+    .replace(/C\/(\d+(?:,\d+)?)\s*MG\b/gi, '$1 mg')
+    .replace(/C\/(\d+(?:,\d+)?)\s*MCG\b/gi, '$1 mcg')
+    .replace(/\b(\d+)\s+UN\b/gi, '$1 Unidades')
+    .replace(/(\d+(?:,\d+)?)MG\b/gi, '$1 mg')
+    .replace(/(\d+(?:,\d+)?)MCG\b/gi, '$1 mcg')
+    .replace(/(\d+(?:,\d+)?)ML\b/gi, '$1 mL')
+    .replace(/(\d+(?:,\d+)?)KG\b/gi, '$1 kg')
+    .replace(/(\d+(?:,\d+)?)GR\b/gi, '$1 g')
+    .replace(/(\d+(?:,\d+)?)G\b/g, '$1 g')
+    .replace(/(\d+(?:,\d+)?)K\b/gi, '$1 kg')
+    .replace(/\b(\d+)\s*FPS\b/gi, 'FPS $1')
+    .replace(/\bFPS\s*(\d+)\b/gi, 'FPS $1')
+    .replace(/\b(\d+)CPR?\b/gi, '$1 Comprimidos')
+    .replace(/\b(\d+)COMP\b/gi, '$1 Comprimidos')
+    .replace(/\b(\d+)CAPS?\b/gi, '$1 Cápsulas')
     .replace(/\b(\d+)DRG\b|\b(\d+)DR\b/gi, (_, a, b) => `${a || b} Drágeas`)
-    .replace(/\b(\d+)DOS\b/gi, "$1 Doses")
-    .replace(/\b(\d+)UN\b/gi, "$1 Unidades")
-    .replace(/C\/(\d+)\+(\d+)/gi, "$1 + $2 Unidades")
-    .replace(/C\/(\d+)/gi, "$1 Unidades")
-    .replace(/S\/AB/gi, "Sem Abas")
-    .replace(/C\/AB/gi, "Com Abas")
-    .replace(/C\/REF/gi, "Com Reforço")
-    .replace(/C\/SUP/gi, "Com Suporte")
-    .replace(/P\/MAQUIAG/gi, "Para Maquiagem")
-    .replace(/P\//gi, "Para ");
+    .replace(/\b(\d+)DOS\b/gi, '$1 Doses')
+    .replace(/\b(\d+)UN\b/gi, '$1 Unidades')
+    .replace(/C\/(\d+)\+(\d+)/gi, '$1 + $2 Unidades')
+    .replace(/C\/(\d+)/gi, '$1 Unidades')
+    .replace(/S\/AB/gi, 'Sem Abas')
+    .replace(/C\/AB/gi, 'Com Abas')
+    .replace(/C\/REF/gi, 'Com Reforço')
+    .replace(/C\/SUP/gi, 'Com Suporte')
+    .replace(/P\/MAQUIAG/gi, 'Para Maquiagem')
+    .replace(/P\//gi, 'Para ');
 
   return s;
 }
 
 function aplicarContextos(entrada) {
-  const registro = typeof entrada === "object" && entrada !== null ? entrada : null;
-  const textoOriginal = registro ? (registro.nome || registro.nomeOriginal || "") : entrada;
-  const original = String(textoOriginal || "").toUpperCase();
-  const grupoOrigem = String(registro?.produtoOrigem?.nomeGrupo || "");
-  const ehFarmaco = /\b(ETICOS|SIMILAR|GENERICO|GENERICO)\b/i.test(grupoOrigem) || Boolean(registro?.nomePrincipioAtivo);
+  const registro =
+    typeof entrada === 'object' && entrada !== null ? entrada : null;
+  const textoOriginal = registro
+    ? registro.nome || registro.nomeOriginal || ''
+    : entrada;
+  const original = String(textoOriginal || '').toUpperCase();
+  const grupoOrigem = String(registro?.produtoOrigem?.nomeGrupo || '');
+  const ehFarmaco =
+    /\b(ETICOS|SIMILAR|GENERICO|GENERICO)\b/i.test(grupoOrigem) ||
+    Boolean(registro?.nomePrincipioAtivo);
   let s = protegerPontosNumericos(original);
 
   // ponto vira separador, mas códigos tipo 8.3 ficam preservados
-  s = s.replace(/[.]+/g, " ");
+  s = s.replace(/[.]+/g, ' ');
   s = restaurarPontosNumericos(s);
+  s = s
+    .replace(/\bMAQ\b/gi, 'Maquiagem')
+    .replace(/\bMYB\b|\bMAYB\b/gi, 'Maybelline')
+    .replace(/\bMASC(?:ARA)?\s+PARA\s+CILIOS\b/gi, 'Mascara para Cilios')
+    .replace(/\bCOLOSSAL\b/gi, 'Colossal')
+    .replace(/\bBLACK\s+SMUDGI\b/gi, 'Black Smudge')
+    .replace(/\bSORV\b/gi, 'Sorvete')
+    .replace(/\bSHAMP\b/gi, 'Shampoo')
+    .replace(/\bINF\b/gi, 'Infantil')
+    .replace(/\bACIDO\s+HIAL\b/gi, 'Acido Hialuronico')
+    .replace(/\bVIT\s+B5\b/gi, 'Vitamina B5')
+    .replace(/\bFIO\s+D\b/gi, 'Fio Dental')
+    .replace(/\bPERMANG\s+POTAS\b/gi, 'Permanganato de Potassio')
+    .replace(/\bSORO\s+FISIOL\b/gi, 'Soro Fisiologico')
+    .replace(/\bCALVIN\s+FLEIN\b/gi, 'Calvin Klein')
+    .replace(/\bPRESILIA\b/gi, 'Presilha')
+    .replace(/\bTICTAC\b/gi, 'Tic Tac')
+    .replace(/\bPQ\b/gi, 'Pequeno')
+    .replace(/\bMD\b/gi, 'Media')
+    .replace(/\bFN\b/gi, 'Fina')
+    .replace(/\bRABICO\b/gi, 'Rabico')
+    .replace(/\bELASTICA\b/gi, 'Elastico')
+    .replace(/\bGARRAFA\s+PARA\s+ECOTANK\b/gi, 'Garrafa de Tinta para Ecotank')
+    .replace(/\bEPSONPT\b/gi, 'Epson PT')
+    .replace(/\bMASC(?:ARA)?\s+CIR(?:U|Ú)G(?:ICA)?\b/gi, 'Mascara Cirurgica')
+    .replace(/\bSOL[\s-]*M(?:ILLEN(?:N)?I?UM|ILENIUM)\b/gi, 'Sol-Millennium')
+    .replace(/\bLUERLOCK\b/gi, 'Luer Lock')
+    .replace(/\bSER\b(?=\s*\d+(?:,\d+)?\s*ML\b)/gi, 'Seringa')
+    .replace(/\bC\/\s*AGULHA\b/gi, 'com Agulha')
+    .replace(/\bPINC[EI]S\b/gi, 'Pinceis');
 
   if (contextoSuplemento(original)) {
+    s = s;
     s = s
-      .replace(/SH\s*MASS/gi, "Shake Mass")
-      .replace(/MASS\s*SH/gi, "Mass Shake")
-      .replace(/\bSH\b/gi, "Shake")
-      .replace(/\bPROT\b/gi, "Protein")
-      .replace(/\bPO\b/gi, "Pó")
-      .replace(/\bBAU\b|\bBAUN\b|\bBAUNIL\b/gi, "Baunilha")
-      .replace(/\bCHOC\b/gi, "Chocolate")
-      .replace(/\bMOR\b|\bMORANG\b/gi, "Morango")
-      .replace(/\bPESS\b/gi, "Pêssego")
-      .replace(/BAN\/MA/gi, "Banana/Maçã")
-      .replace(/\bBAN\b/gi, "Banana")
-      .replace(/\bBAD BO\b|\bBAD BOY\b/gi, "Bad Boy")
-      .replace(/\bATLHETIC\b|\bATLHET\b|\bATL\b/gi, "Atlhetica")
-      .replace(/\bMALTODEXTRIN\b/gi, "Maltodextrina")
-      .replace(/COOK&CR|CO\/CR/gi, "Cookies & Cream")
-      .replace(/DOC LEIT/gi, "Doce de Leite")
-      .replace(/\b(300|450|500|800|850|900|907|930)\b(?!\s*(g|mL|kg))/gi, "$1 g");
+      .replace(/SH\s*MASS/gi, 'Shake Mass')
+      .replace(/MASS\s*SH/gi, 'Mass Shake')
+      .replace(/\bSH\b/gi, 'Shake')
+      .replace(/\bPROT\b/gi, 'Protein')
+      .replace(/\bPO\b/gi, 'Pó')
+      .replace(/\bBAU\b|\bBAUN\b|\bBAUNIL\b/gi, 'Baunilha')
+      .replace(/\bCHOC\b/gi, 'Chocolate')
+      .replace(/\bMOR\b|\bMORANG\b/gi, 'Morango')
+      .replace(/\bPESS\b/gi, 'Pêssego')
+      .replace(/BAN\/MA/gi, 'Banana/Maçã')
+      .replace(/\bBAN\b/gi, 'Banana')
+      .replace(/\bBAD BO\b|\bBAD BOY\b/gi, 'Bad Boy')
+      .replace(/\bATLHETIC\b|\bATLHET\b|\bATL\b/gi, 'Atlhetica')
+      .replace(/\bMALTODEXTRIN\b/gi, 'Maltodextrina')
+      .replace(/COOK&CR|CO\/CR/gi, 'Cookies & Cream')
+      .replace(/DOC LEIT/gi, 'Doce de Leite')
+      .replace(
+        /\b(300|450|500|800|850|900|907|930)\b(?!\s*(g|mL|kg))/gi,
+        '$1 g',
+      );
   }
 
   // Categorias e contextos gerais
   s = s
-    .replace(/\bABS\b/gi, "Absorvente")
-    .replace(/\bSH\b/gi, "Shampoo")
-    .replace(/\bCOND\b/gi, "Condicionador")
-    .replace(/\bSAB LIQ\b/gi, "Sabonete Líquido")
-    .replace(/\bSAB\b/gi, "Sabonete")
-    .replace(/\bDESOD\b|\bDES\b/gi, "Desodorante")
-    .replace(/\bCR DENT\b/gi, "Creme Dental")
-    .replace(/\bCR D\b|\bCRD\b/gi, "Creme Dental")
-    .replace(/\bCR\b|\bCRE\b/gi, "Creme")
-    .replace(/\bLOC\b/gi, "Loção")
-    .replace(/\bENX BUC\b/gi, "Enxaguante Bucal")
-    .replace(/\bESC DENT\b|\bESC D\b/gi, "Escova Dental")
-    .replace(/\bCURAT\b|\bCUR\b/gi, "Curativo")
-    .replace(/\bLENCOS\b/gi, "Lenços")
-    .replace(/\bLENC\b/gi, "Lenço")
-    .replace(/\bUMED\b|\bUME\b/gi, "Umedecidos")
-    .replace(/\bTIN\b|\bTINT\b/gi, "Tintura")
-    .replace(/\bALIS\b/gi, "Alisante")
-    .replace(/\bDESCOL\b/gi, "Descolorante")
-    .replace(/\bPOM DERM\b/gi, "Pomada Dermatológica")
-    .replace(/\bPOM\b/gi, "Pomada")
-    .replace(/\bCR DERM\b/gi, "Creme Dermatológico")
-    .replace(/\bSPR\b/gi, "Spray")
-    .replace(/\bGTS\b/gi, "Gotas")
-    .replace(/\bXPE\b/gi, "Xarope")
-    .replace(/\bSUSP\b/gi, "Suspensão")
-    .replace(/\bGE\b/gi, "Genérico");
+    .replace(/\bABS\b/gi, 'Absorvente')
+    .replace(/\bSH\b/gi, 'Shampoo')
+    .replace(/\bCOND\b/gi, 'Condicionador')
+    .replace(/\bSAB LIQ\b/gi, 'Sabonete Líquido')
+    .replace(/\bSAB\b/gi, 'Sabonete')
+    .replace(/\bDESOD\b|\bDES\b/gi, 'Desodorante')
+    .replace(/\bCR DENT\b/gi, 'Creme Dental')
+    .replace(/\bCR D\b|\bCRD\b/gi, 'Creme Dental')
+    .replace(/\bCR\b|\bCRE\b/gi, 'Creme')
+    .replace(/\bLOC\b/gi, 'Loção')
+    .replace(/\bENX BUC\b/gi, 'Enxaguante Bucal')
+    .replace(/\bESC DENT\b|\bESC D\b/gi, 'Escova Dental')
+    .replace(/\bCURAT\b|\bCUR\b/gi, 'Curativo')
+    .replace(/\bLENCOS\b/gi, 'Lenços')
+    .replace(/\bLENC\b/gi, 'Lenço')
+    .replace(/\bUMED\b|\bUME\b/gi, 'Umedecidos')
+    .replace(/\bTIN\b|\bTINT\b/gi, 'Tintura')
+    .replace(/\bALIS\b/gi, 'Alisante')
+    .replace(/\bDESCOL\b/gi, 'Descolorante')
+    .replace(/\bPOM DERM\b/gi, 'Pomada Dermatológica')
+    .replace(/\bPOM\b/gi, 'Pomada')
+    .replace(/\bCR DERM\b/gi, 'Creme Dermatológico')
+    .replace(/\bSPR\b/gi, 'Spray')
+    .replace(/\bGTS\b/gi, 'Gotas')
+    .replace(/\bXPE\b/gi, 'Xarope')
+    .replace(/\bSUSP\b/gi, 'Suspensão')
+    .replace(/\bGE\b/gi, 'Genérico');
 
   // Marcas/linhas e abreviações contextuais recorrentes
   s = s
-    .replace(/\bGILL\b|\bGIL\b/gi, "Gillette")
+    .replace(/\bGILL\b|\bGIL\b/gi, 'Gillette')
     .replace(/\bJOHNSONS\b/gi, "Johnson's")
-    .replace(/\bMUND\b/gi, "Mundial")
-    .replace(/\bCOLG\b/gi, "Colgate")
-    .replace(/\bPALM\b/gi, "Palmolive")
-    .replace(/\bPHYTOERV\b/gi, "Phytoervas")
-    .replace(/\bPROMI\b|\bPROMIL\b/gi, "Promillus")
-    .replace(/\bSORR\b/gi, "Sorriso")
-    .replace(/\bFRESHM\b/gi, "Fresh Mint")
-    .replace(/\bLV\b/gi, "Leve")
-    .replace(/\bEXT\b/gi, "Extrato")
-    .replace(/\bALG\b/gi, "Algas")
-    .replace(/\bADOC\b/gi, "Adoçante")
-    .replace(/\bCULINARIO\b/gi, "Culinário")
-    .replace(/\bBOMB\b/gi, "Bomba")
-    .replace(/\bTIRA LEITE\b/gi, "Tira-Leite")
-    .replace(/\bCURV\b/gi, "Curva")
-    .replace(/\bFIN\b/gi, "Fina")
-    .replace(/\bRET\b/gi, "Reta")
-    .replace(/\bNEOP\b/gi, "Neoprene")
-    .replace(/\bMAC\b/gi, "Macia")
-    .replace(/\bBAND AID\b/gi, "Band-Aid")
-    .replace(/\bSIL\b/gi, "Silicone")
-    .replace(/\bLAV\b/gi, "Lavável")
-    .replace(/\bFUR\b/gi, "Furos")
-    .replace(/\bSOD\b/gi, "Sódico")
-    .replace(/\bCLOR\b/gi, "Cloridrato de")
-    .replace(/\bFISIOGEL A I\b/gi, "Fisiogel A.I.")
-    .replace(/\bALIV CALM\b/gi, "Alívio Calmante")
-    .replace(/\bCETOC\+BETAM\b/gi, "Cetoconazol + Betametasona")
-    .replace(/\bBETAM\+GENT\b/gi, "Betametasona + Gentamicina")
-    .replace(/\bG DOUR\b/gi, "Gota Dourada")
-    .replace(/\bPROT LEITE\b/gi, "Proteínas do Leite")
-    .replace(/\bTR CHOQUE\b/gi, "Tratamento de Choque")
-    .replace(/\bCAB SECO\b/gi, "Cabelos Secos")
-    .replace(/\bCAB COLO\b/gi, "Cabelos Coloridos")
-    .replace(/\bLONG STR\b/gi, "Long & Strong")
-    .replace(/\bPROT MAMILO\b/gi, "Protetor de Mamilo")
-    .replace(/\bPROT SEIOS\b/gi, "Protetor de Seios")
-    .replace(/\bFIOR\b/gi, "Fiorucci")
-    .replace(/\bAE\b/gi, "Aerossol")
-    .replace(/\bECHA\b/gi, "Echarpe")
-    .replace(/\bIMEDIA\b/gi, "Imédia")
-    .replace(/\bALIC CUT\b/gi, "Alicate Cutícula")
-    .replace(/\bINTERCAMB\b/gi, "Intercambiável");
+    .replace(/\bMUND\b/gi, 'Mundial')
+    .replace(/\bCOLG\b/gi, 'Colgate')
+    .replace(/\bPALM\b/gi, 'Palmolive')
+    .replace(/\bPHYTOERV\b/gi, 'Phytoervas')
+    .replace(/\bPROMI\b|\bPROMIL\b/gi, 'Promillus')
+    .replace(/\bSORR\b/gi, 'Sorriso')
+    .replace(/\bFRESHM\b/gi, 'Fresh Mint')
+    .replace(/\bLV\b/gi, 'Leve')
+    .replace(/\bEXT\b/gi, 'Extrato')
+    .replace(/\bALG\b/gi, 'Algas')
+    .replace(/\bADOC\b/gi, 'Adoçante')
+    .replace(/\bCULINARIO\b/gi, 'Culinário')
+    .replace(/\bBOMB\b/gi, 'Bomba')
+    .replace(/\bTIRA LEITE\b/gi, 'Tira-Leite')
+    .replace(/\bCURV\b/gi, 'Curva')
+    .replace(/\bFIN\b/gi, 'Fina')
+    .replace(/\bRET\b/gi, 'Reta')
+    .replace(/\bNEOP\b/gi, 'Neoprene')
+    .replace(/\bMAC\b/gi, 'Macia')
+    .replace(/\bBAND AID\b/gi, 'Band-Aid')
+    .replace(/\bSIL\b/gi, 'Silicone')
+    .replace(/\bLAV\b/gi, 'Lavável')
+    .replace(/\bFUR\b/gi, 'Furos')
+    .replace(/\bSOD\b/gi, 'Sódico')
+    .replace(/\bCLOR\b/gi, 'Cloridrato de')
+    .replace(/\bFISIOGEL A I\b/gi, 'Fisiogel A.I.')
+    .replace(/\bALIV CALM\b/gi, 'Alívio Calmante')
+    .replace(/\bCETOC\+BETAM\b/gi, 'Cetoconazol + Betametasona')
+    .replace(/\bBETAM\+GENT\b/gi, 'Betametasona + Gentamicina')
+    .replace(/\bG DOUR\b/gi, 'Gota Dourada')
+    .replace(/\bPROT LEITE\b/gi, 'Proteínas do Leite')
+    .replace(/\bTR CHOQUE\b/gi, 'Tratamento de Choque')
+    .replace(/\bCAB SECO\b/gi, 'Cabelos Secos')
+    .replace(/\bCAB COLO\b/gi, 'Cabelos Coloridos')
+    .replace(/\bLONG STR\b/gi, 'Long & Strong')
+    .replace(/\bPROT MAMILO\b/gi, 'Protetor de Mamilo')
+    .replace(/\bPROT SEIOS\b/gi, 'Protetor de Seios')
+    .replace(/\bFIOR\b/gi, 'Fiorucci')
+    .replace(/\bAE\b/gi, 'Aerossol')
+    .replace(/\bECHA\b/gi, 'Echarpe')
+    .replace(/\bIMEDIA\b/gi, 'Imédia')
+    .replace(/\bALIC CUT\b/gi, 'Alicate Cutícula')
+    .replace(/\bINTERCAMB\b/gi, 'Intercambiável');
 
   // Alguns contextos que dependem da frase inteira
-  if (original.includes("BARRA CER")) s = s.replace(/BARRA CER/gi, "Barra de Cereal").replace(/\bCERAMIDAS\b/gi, "Cereal");
-  if (original.includes("PROTEX") && /\bREF\b/.test(original)) s = s.replace(/\bREF\b|\bREFORÇO\b/gi, "Refil");
-  if (original.includes("SAB PROTEX COMP 12")) s = s.replace(/COMP 12|COMPRIMIDO 12/gi, "Complete 12");
-  if (/\b(CR|CRE|MASC)\s*CAP\b/.test(original)) s = s.replace(/\bCAP\b/gi, "Capilar").replace(/\bCÁPSULA\b/gi, "Capilar");
-  if (original.includes("JOELHEIRA") || original.includes("NEOP")) {
+  if (original.includes('BARRA CER'))
     s = s
-      .replace(/\bPAT\b/gi, "Patelar")
-      .replace(/\bPATELAR\b/gi, "Patelar");
+      .replace(/BARRA CER/gi, 'Barra de Cereal')
+      .replace(/\bCERAMIDAS\b/gi, 'Cereal');
+  if (original.includes('PROTEX') && /\bREF\b/.test(original))
+    s = s.replace(/\bREF\b|\bREFORÇO\b/gi, 'Refil');
+  if (original.includes('SAB PROTEX COMP 12'))
+    s = s.replace(/COMP 12|COMPRIMIDO 12/gi, 'Complete 12');
+  if (/\b(CR|CRE|MASC)\s*CAP\b/.test(original))
+    s = s.replace(/\bCAP\b/gi, 'Capilar').replace(/\bCÁPSULA\b/gi, 'Capilar');
+  if (original.includes('JOELHEIRA') || original.includes('NEOP')) {
+    s = s.replace(/\bPAT\b/gi, 'Patelar').replace(/\bPATELAR\b/gi, 'Patelar');
   }
-  if (original.includes("ESC.D") && /40\s*G\s*MAC/.test(original)) s = s.replace(/40\s*g\s*Macia/gi, "40 Grande Macia");
-  if (original.startsWith("COL.")) s = s.replace(/^COL\b/gi, "Colônia").replace(/\bPIUI\b/gi, "Piuí");
-  if (original.startsWith("MAM KUKA")) s = s.replace(/\bRED\b/gi, "Redonda").replace(/\bCOL\b/gi, "Colorida").replace(/\bPL\b/gi, "Plástico");
-  if (original.includes("PALM.NATURALS")) s = s.replace(/\bSECO\b/gi, "Cabelos Secos");
+  if (original.includes('ESC.D') && /40\s*G\s*MAC/.test(original))
+    s = s.replace(/40\s*g\s*Macia/gi, '40 Grande Macia');
+  if (original.startsWith('COL.'))
+    s = s.replace(/^COL\b/gi, 'Colônia').replace(/\bPIUI\b/gi, 'Piuí');
+  if (original.startsWith('MAM KUKA'))
+    s = s
+      .replace(/\bRED\b/gi, 'Redonda')
+      .replace(/\bCOL\b/gi, 'Colorida')
+      .replace(/\bPL\b/gi, 'Plástico');
+  if (/\bMAM\b/i.test(original) && (/\bFIRST\s+B\b/i.test(original) || /\bBICO\b/i.test(original))) {
+    s = s
+      .replace(/\bFIRST\s+B\b/gi, 'First Bottle')
+      .replace(/\bMAMADEIRA\b/gi, 'Mamadeira')
+      .replace(/\bBICO\b/gi, 'Bico')
+      .replace(/\bORTO\b/gi, 'Ortodontico')
+      .replace(/\b0\+M\b/gi, '0+ Meses')
+      .replace(/\b2\+M\b/gi, '2+ Meses')
+      .replace(/\b4\+M\b/gi, '4+ Meses')
+      .replace(/\bM\b(?=\s+MAM\b)/gi, 'Meses')
+      .replace(/\(BEB\)-\d+\b/gi, '')
+      .replace(/\bREF[.:]?\s*(\d{3,5})\b/gi, 'Ref $1');
+  }
+  if (/\bMAM\b/i.test(original) && /\bFIRST\s+B\b/i.test(original)) {
+    s = s
+      .replace(/^\s*MAM\b/gi, 'Mamadeira MAM')
+      .replace(/\bMAM\s+(\d{3,5})\b/gi, 'Ref $1');
+  }
+  if (/\bMAM\b/i.test(original) && /\bFIRST\s+BOTTLE\b/i.test(original)) {
+    s = s
+      .replace(/^\s*MAM\b/gi, 'Mamadeira MAM')
+      .replace(/\bBOYS\b/gi, 'Boys');
+  }
+  if (/\bMAM\b/i.test(original) && /\bBICO\b/i.test(original) && /\b1336\b/i.test(original)) {
+    s = s
+      .replace(/^\s*Bico\s+Mam\b/gi, 'Bico Mamadeira MAM')
+      .replace(/\bORTODONTICO\b/gi, 'Ortodontico')
+      .replace(/\bORTO\b/gi, 'Ortodontico')
+      .replace(/\b4\+\s+MESES\b/gi, '4+ Meses')
+      .replace(/\b1336\b/gi, 'Ref 1336');
+  }
+  if (original.includes('PALM.NATURALS'))
+    s = s.replace(/\bSECO\b/gi, 'Cabelos Secos');
 
   if (/\bPALMOLIVE\b/i.test(original) && /\bILUM PR\b/i.test(original)) {
     s = s
-      .replace(/\bNAT\b/gi, "Naturals")
-      .replace(/\bILUM\s+PR\b/gi, "Iluminador Pretos");
+      .replace(/\bNAT\b/gi, 'Naturals')
+      .replace(/\bILUM\s+PR\b/gi, 'Iluminador Pretos');
   }
 
-  if (ehFarmaco || /\b(?:XPE|XP|SOL|SUSP|GTS|SUP|CPR|CP|CPS|DRG|ENV|FLAC|FLACONETES)\b|\d+(?:,\d+)?(?:MG|ML|G)\b/i.test(original)) {
+  if (
+    ehFarmaco ||
+    /\b(?:XPE|XP|SOL|SUSP|GTS|SUP|CPR|CP|CPS|DRG|ENV|FLAC|FLACONETES)\b|\d+(?:,\d+)?(?:MG|ML|G)\b/i.test(
+      original,
+    )
+  ) {
     s = s
-      .replace(/\bXP\b/gi, "Xarope")
-      .replace(/\bSOL\s+EXP\b/gi, "Solucao Expectorante")
-      .replace(/\bXarope\s+EXP\s+ADT\b/gi, "Xarope Expectorante Adulto")
-      .replace(/\bXarope\s+EXP\s+PED\b/gi, "Xarope Expectorante Pediatrico")
-      .replace(/\bEXP\s+ADT\b/gi, "Expectorante Adulto")
-      .replace(/\bEXP\s+INF\b/gi, "Expectorante Infantil")
-      .replace(/\bEXP\s+PED\b/gi, "Expectorante Pediatrico")
-      .replace(/\bADT\b/gi, "Adulto")
-      .replace(/\bPED\b/gi, "Pediatrico")
-      .replace(/\bINF\b/gi, "Infantil");
+      .replace(/\bXP\b/gi, 'Xarope')
+      .replace(/\bSOL\s+EXP\b/gi, 'Solucao Expectorante')
+      .replace(/\bXarope\s+EXP\s+ADT\b/gi, 'Xarope Expectorante Adulto')
+      .replace(/\bXarope\s+EXP\s+PED\b/gi, 'Xarope Expectorante Pediatrico')
+      .replace(/\bEXP\s+ADT\b/gi, 'Expectorante Adulto')
+      .replace(/\bEXP\s+INF\b/gi, 'Expectorante Infantil')
+      .replace(/\bEXP\s+PED\b/gi, 'Expectorante Pediatrico')
+      .replace(/\bADT\b/gi, 'Adulto')
+      .replace(/\bPED\b/gi, 'Pediatrico')
+      .replace(/\bINF\b/gi, 'Infantil');
   }
 
   if (/\bLUBR/i.test(original) && /\bINTIM\b/i.test(original)) {
-    s = s.replace(/\bINTIM\b/gi, "Intimo");
+    s = s.replace(/\bINTIM\b/gi, 'Intimo');
   }
 
-  if (/\bSULFADIAZINA\b/i.test(original) && /\bPR\s+10MG\/G\b/i.test(original)) {
-    s = s.replace(/\bPR\b/gi, "Prata");
+  if (
+    /\bSULFADIAZINA\b/i.test(original) &&
+    /\bPR\s+10MG\/G\b/i.test(original)
+  ) {
+    s = s.replace(/\bPR\b/gi, 'Prata');
   }
 
   if (/\bTRESEMME\b/i.test(original) && /\bHID PR\b/i.test(original)) {
-    s = s.replace(/\bHID\s+PR\b/gi, "Hidratacao Profunda");
+    s = s.replace(/\bHID\s+PR\b/gi, 'Hidratacao Profunda');
   }
 
-  if (/\bBIO EXTRAT|HASKELL|SFERA|DOVE\b/i.test(original) && /\bPOS (?:PR|PROG)\b/i.test(original)) {
-    s = s.replace(/\bPOS\s+(?:PR|PROG)\b/gi, "Pos Progressiva");
+  if (
+    /\bBIO EXTRAT|HASKELL|SFERA|DOVE\b/i.test(original) &&
+    /\bPOS (?:PR|PROG)\b/i.test(original)
+  ) {
+    s = s.replace(/\bPOS\s+(?:PR|PROG)\b/gi, 'Pos Progressiva');
   }
 
   if (/\bHASKELL\b/i.test(original) && /\bPOS PROGR(?:ES)?\b/i.test(original)) {
-    s = s.replace(/\bPOS\s+PROGR(?:ES)?\b/gi, "Pos Progressiva");
+    s = s.replace(/\bPOS\s+PROGR(?:ES)?\b/gi, 'Pos Progressiva');
   }
 
   if (/\bORAL-B\b/i.test(original) && /\bT12 PR\b/i.test(original)) {
-    s = s.replace(/\bT12\s+PR\b/gi, "Total 12 Pro-Saude");
+    s = s.replace(/\bT12\s+PR\b/gi, 'Total 12 Pro-Saude');
   }
 
   if (/\bCOLGATE\b/i.test(original) && /\bT12 PR\b/i.test(original)) {
-    s = s.replace(/\bT12\s+PR\b/gi, "Total 12 Pro-Saude");
+    s = s.replace(/\bT12\s+PR\b/gi, 'Total 12 Pro-Saude');
   }
 
   if (/\bCEPACOL\b/i.test(original) && /\bPL ADV\b/i.test(original)) {
-    s = s.replace(/\bPL\s+ADV\b/gi, "Plus Advanced");
+    s = s.replace(/\bPL\s+ADV\b/gi, 'Plus Advanced');
   }
 
   if (/\bLISTERINE\b/i.test(original) && /\bWH PR\b/i.test(original)) {
-    s = s.replace(/\bWH\s+PR\b/gi, "Whitening Pre-Escovacao");
+    s = s.replace(/\bWH\s+PR\b/gi, 'Whitening Pre-Escovacao');
+  }
+
+  if (/\bHAV\b|\bHAVAIANAS\b/i.test(original)) {
+    s = s
+      .replace(/\bHAV\b/gi, 'Havaianas')
+      .replace(/\bREI\s+LEAO\b/gi, 'Lion King')
+      .replace(/\bHEROIS\b/gi, 'Herois')
+      .replace(/\bNV\b/gi, 'Novo')
+      .replace(/\bVDE\b/gi, 'Verde')
+      .replace(/\bPTO\b/gi, 'Preto')
+      .replace(/\bGRAF\b/gi, 'Grafite')
+      .replace(/\bCZ\b/gi, 'Cinza')
+      .replace(/\bAMAR\b/gi, 'Amarelo')
+      .replace(/\bBAN\b/gi, 'Banana')
+      .replace(/\bFOLHAG\b/gi, 'Folhagem')
+      .replace(/\bMAR\b/gi, 'Marinho')
+      .replace(/\bTAM\b/gi, 'Tamanho')
+      .replace(/\bTA\b$/gi, 'Tamanho')
+      .replace(/\bINF\b/gi, 'Infantil');
   }
 
   if (/^\s*PR\b/i.test(original) && /\bJONTEX\b/i.test(original)) {
-    s = s.replace(/^\s*PR\b/gi, "Preservativo");
+    s = s.replace(/^\s*PR\b/gi, 'Preservativo');
   }
 
   if (/^\s*SB\b/i.test(original) && /\b(?:PROTEX|GRANADO)\b/i.test(original)) {
-    s = s.replace(/^\s*SB\b/gi, "Sabonete");
+    s = s.replace(/^\s*SB\b/gi, 'Sabonete');
   }
 
   if (/\bLIQ BEBE\b/i.test(original) && /\bGRANADO\b/i.test(original)) {
-    s = s.replace(/\bLIQ\s+BEBE\b/gi, "Liquido Bebe");
+    s = s.replace(/\bLIQ\s+BEBE\b/gi, 'Liquido Bebe');
   }
 
-  if (/\bACTIVE\b|\bLOREAL\b|\bPAYOT\b|\bNUPILL\b|\bREVITALIFT\b|\bTENYS\b/i.test(original) && /\bANTIR\b/i.test(original)) {
-    s = s.replace(/\bANTIR\b/gi, "Antirrugas");
+  if (
+    /\bACTIVE\b|\bLOREAL\b|\bPAYOT\b|\bNUPILL\b|\bREVITALIFT\b|\bTENYS\b/i.test(
+      original,
+    ) &&
+    /\bANTIR\b/i.test(original)
+  ) {
+    s = s.replace(/\bANTIR\b/gi, 'Antirrugas');
   }
-
-
-
 
   if (contextoFralda(original)) {
     // Protege marcas antes de aliases genéricos: POM POM não é Pomada Pomada.
@@ -413,50 +711,67 @@ function aplicarContextos(entrada) {
       .replace(/\bJumbi\b/gi, 'Jumbo');
   }
 
+  if (/\bKISSES\b/i.test(original)) {
+    s = s
+      .replace(/\bMASTER\b/gi, 'Master')
+      .replace(/\bADT\b/gi, 'Adulto')
+      .replace(/\bXG\b/gi, 'XG');
+  }
+
+  if (/\bMINTY\b/i.test(original)) {
+    s = s
+      .replace(/\bFRUIT\b/gi, 'Fruit')
+      .replace(/\bMORANGO\b/gi, 'Morango');
+  }
+
   if (/\bALWAYS\b/i.test(original) && /\bSUP PR SEC\b/i.test(original)) {
-    s = s.replace(/\bSUP\s+PR\s+SEC\b/gi, "Super Protecao Seca");
+    s = s.replace(/\bSUP\s+PR\s+SEC\b/gi, 'Super Protecao Seca');
   }
 
   if (/\bALWAYS\b/i.test(original) && /\bSUP PR SUA\b/i.test(original)) {
-    s = s.replace(/\bSUP\s+PR\s+SUA\b/gi, "Super Protecao Suave");
+    s = s.replace(/\bSUP\s+PR\s+SUA\b/gi, 'Super Protecao Suave');
   }
 
   if (/^\s*ABS\b/i.test(original) && /\bALW\b/i.test(original)) {
-    s = s.replace(/\bALW\b/gi, "Always");
+    s = s.replace(/\bALW\b/gi, 'Always');
   }
 
   if (/^\s*ABS\b/i.test(original) && /\bINTIM\b/i.test(original)) {
     s = s
-      .replace(/\bINTIM\b/gi, "Intimus")
-      .replace(/\bS\/A\b/gi, "Sem Abas")
-      .replace(/\bC\/A\b/gi, "Com Abas");
+      .replace(/\bINTIM\b/gi, 'Intimus')
+      .replace(/\bS\/A\b/gi, 'Sem Abas')
+      .replace(/\bC\/A\b/gi, 'Com Abas');
   }
 
   if (/\bINTIM(?:US)?\b/i.test(original) && /\bTRI PR\b/i.test(original)) {
-    s = s.replace(/\bTRI\s+PR\b/gi, "Tripla Protecao");
+    s = s.replace(/\bTRI\s+PR\b/gi, 'Tripla Protecao');
   }
 
-  if (/\b(?:ALW|ALWAYS)\b/i.test(original) && /\bPROT TOTAL\b/i.test(original)) {
-    s = s.replace(/\bPROT\s+TOTAL\b/gi, "Protecao Total");
+  if (
+    /\b(?:ALW|ALWAYS)\b/i.test(original) &&
+    /\bPROT TOTAL\b/i.test(original)
+  ) {
+    s = s.replace(/\bPROT\s+TOTAL\b/gi, 'Protecao Total');
   }
 
-  if (/\b(?:SANCARE|NEXCARE|3M)\b/i.test(original) && /\bPROT OCULAR\b/i.test(original)) {
-    s = s.replace(/\bPROT\s+OCULAR\b/gi, "Protetor Ocular");
+  if (
+    /\b(?:SANCARE|NEXCARE|3M)\b/i.test(original) &&
+    /\bPROT OCULAR\b/i.test(original)
+  ) {
+    s = s.replace(/\bPROT\s+OCULAR\b/gi, 'Protetor Ocular');
   }
 
   if (/\bINTIMUS\b/i.test(original) && /\bPROT EX PR AB\b/i.test(original)) {
-    s = s.replace(/\bPROT\s+EX\s+PR\s+AB\b/gi, "Extra Protecao Abas");
+    s = s.replace(/\bPROT\s+EX\s+PR\s+AB\b/gi, 'Extra Protecao Abas');
   }
 
   if (/\bHUGGIES\b/i.test(original) && /\bTRIP PR\b/i.test(original)) {
-    s = s.replace(/\bTRIP\s+PR\b/gi, "Tripla Protecao");
+    s = s.replace(/\bTRIP\s+PR\b/gi, 'Tripla Protecao');
   }
 
   if (/\bHUGGIES\b/i.test(original) && /\bTRI PR\b/i.test(original)) {
-    s = s.replace(/\bTRI\s+PR\b/gi, "Tripla Protecao");
+    s = s.replace(/\bTRI\s+PR\b/gi, 'Tripla Protecao');
   }
-
-
 
   if (original.startsWith('ESM ') || original.startsWith('ESM.')) {
     s = s.replace(/^\s*ESM\b/gi, 'Esmalte');
@@ -475,7 +790,10 @@ function aplicarContextos(entrada) {
       .replace(/\bCreme\s+Pentear\b/gi, 'Creme para Pentear');
   }
 
-  if (original.includes('MARU') && (original.includes('BAS CAS CAV') || original.includes('BAS.CAS.CAV'))) {
+  if (
+    original.includes('MARU') &&
+    (original.includes('BAS CAS CAV') || original.includes('BAS.CAS.CAV'))
+  ) {
     s = s
       .replace(/\bBAS\b/gi, 'Base')
       .replace(/\bCAS\s+CAV\b/gi, 'Casco de Cavalo')
@@ -503,8 +821,6 @@ function aplicarContextos(entrada) {
   if (original.startsWith('POLIPRED COL')) {
     s = s.replace(/\bCol\b/gi, 'Colírio');
   }
-
-
 
   if (original.includes('JOAO&MAR') || original.includes('JOAO MAR')) {
     s = s
@@ -574,7 +890,6 @@ function aplicarContextos(entrada) {
       .replace(/\bROM\s+VERB\b/gi, 'Roma e Verbena');
   }
 
-
   if (original.startsWith('OLEO CAP') || original.includes(' OLEO CAP ')) {
     s = s
       .replace(/Oleo\s+Cap/gi, 'Óleo Capilar')
@@ -582,22 +897,35 @@ function aplicarContextos(entrada) {
   }
 
   if (original.includes('DOCTOR DUCK')) {
-    s = s
-      .replace(/\bInf\b/gi, 'Infantil')
-      .replace(/\bINF\b/gi, 'Infantil');
+    s = s.replace(/\bInf\b/gi, 'Infantil').replace(/\bINF\b/gi, 'Infantil');
   }
 
   if (original.includes('PANTENE')) {
     s = s
       .replace(/\bCOR\s+RAD\b|\bCor\s+Rad\b/gi, 'Cor Radiante')
       .replace(/\bHIDRAT\b|\bHidrat\b/gi, 'Hidratação')
-      .replace(/\bCUID\s+CLAS\b|\bCuid\s+Clas\b|\bCuid\s+Classico\b/gi, 'Cuidado Clássico')
+      .replace(
+        /\bCUID\s+CLAS\b|\bCuid\s+Clas\b|\bCuid\s+Classico\b/gi,
+        'Cuidado Clássico',
+      )
       .replace(/\bCUID\s+CL\b|\bCuid\s+Cl\b/gi, 'Cuidado Clássico')
-      .replace(/\bLIS\s+SEDOS\b|\bLis\s+Sedos\b|\bLiso\s+Sedos\b/gi, 'Liso e Sedoso')
-      .replace(/\bCAC\s+DEFIN\b|\bCac\s+Defin\b|\bCachos\s+Defin\b/gi, 'Cachos Definidos')
+      .replace(
+        /\bLIS\s+SEDOS\b|\bLis\s+Sedos\b|\bLiso\s+Sedos\b/gi,
+        'Liso e Sedoso',
+      )
+      .replace(
+        /\bCAC\s+DEFIN\b|\bCac\s+Defin\b|\bCachos\s+Defin\b/gi,
+        'Cachos Definidos',
+      )
       .replace(/\b2X1\b|\b2\s+X\s+1\b/gi, '2 em 1')
-      .replace(/\bREST\s+PROFUNDA\b|\bRest\s+Profunda\b/gi, 'Restauração Profunda')
-      .replace(/\bLIS\s+EXT\b|\bLis\s+Ext\b|\bLis\s+Extrato\b|\bLiso\s+Ext\b/gi, 'Liso Extremo');
+      .replace(
+        /\bREST\s+PROFUNDA\b|\bRest\s+Profunda\b/gi,
+        'Restauração Profunda',
+      )
+      .replace(
+        /\bLIS\s+EXT\b|\bLis\s+Ext\b|\bLis\s+Extrato\b|\bLiso\s+Ext\b/gi,
+        'Liso Extremo',
+      );
   }
 
   if (/\bSILICON\b/i.test(original) && /\bSIL&/i.test(original)) {
@@ -623,7 +951,10 @@ function aplicarContextos(entrada) {
       .replace(/\bSIL\s+TR\b/gi, 'Silicone Transparente');
   }
 
-  if (/\bLILLO|NEW BABY|NEOPAN|MURANO\b/i.test(original) && /\bSIL\b/i.test(original)) {
+  if (
+    /\bLILLO|NEW BABY|NEOPAN|MURANO\b/i.test(original) &&
+    /\bSIL\b/i.test(original)
+  ) {
     s = s
       .replace(/\bBICO\s+SIL\b/gi, 'Bico Silicone')
       .replace(/\bC\/BICO\s+SIL\b/gi, 'Com Bico Silicone')
@@ -639,8 +970,12 @@ function aplicarContextos(entrada) {
       .replace(/\bCom\s+1\b/gi, '1 Unidade');
   }
 
-
-  if (original.includes('MANT.KARITE') || original.includes('MANT KARITE') || original.includes('MANT.KAR') || original.includes('MANT KAR')) {
+  if (
+    original.includes('MANT.KARITE') ||
+    original.includes('MANT KARITE') ||
+    original.includes('MANT.KAR') ||
+    original.includes('MANT KAR')
+  ) {
     s = s
       .replace(/\bMANT\s+KARITE\b/gi, 'Manteiga de Karité')
       .replace(/\bMANT\s+KAR\b/gi, 'Manteiga de Karité')
@@ -692,7 +1027,13 @@ function aplicarContextos(entrada) {
       .replace(/\bA WRINKLE\b/gi, 'Anti-Wrinkle');
   }
 
-  if (/^\s*PROT\b/i.test(original) || /\bPROT\s+SOL(?:AR)?\b/i.test(original) || /\b(?:MINESOL|NIVEA|SUNDOWN|EPISOL|ANASOL|FILTRUM|HELIODERM|SUNMAX|COPPERTONE|CENOURA|BRONZE|LOREAL PARIS SOLAR|RED APPLE|NEUTROGENA|LA ROCHE|NEOSTRATA|SUNLESS|AUSTRALIA|CICATRICURE)\b/i.test(original)) {
+  if (
+    /^\s*PROT\b/i.test(original) ||
+    /\bPROT\s+SOL(?:AR)?\b/i.test(original) ||
+    /\b(?:MINESOL|NIVEA|SUNDOWN|EPISOL|ANASOL|FILTRUM|HELIODERM|SUNMAX|COPPERTONE|CENOURA|BRONZE|LOREAL PARIS SOLAR|RED APPLE|NEUTROGENA|LA ROCHE|NEOSTRATA|SUNLESS|AUSTRALIA|CICATRICURE)\b/i.test(
+      original,
+    )
+  ) {
     s = s
       .replace(/\bPROT\s+SOL\b/gi, 'Protetor Solar')
       .replace(/\bPROT\s+SOLAR\b/gi, 'Protetor Solar')
@@ -727,7 +1068,11 @@ function aplicarContextos(entrada) {
       .replace(/\bBB\s+C\b/gi, 'BB Cream');
   }
 
-  if (/\bPANTENE|ELSEVE|MONANGE|TRESEMME|SALON|CAREFREE|INTIMUS|ALWAYS|GARNIER\b/i.test(original)) {
+  if (
+    /\bPANTENE|ELSEVE|MONANGE|TRESEMME|SALON|CAREFREE|INTIMUS|ALWAYS|GARNIER\b/i.test(
+      original,
+    )
+  ) {
     s = s
       .replace(/\bPROT\b/gi, 'Protecao')
       .replace(/\bNAT\s+PROT\b/gi, 'Natural Protect')
@@ -751,7 +1096,10 @@ function aplicarContextos(entrada) {
       .replace(/\bKARITE\b/gi, 'Karité');
   }
 
-  if (/\bSPRAYZIIN|APIS FRESH\b/i.test(original) && /\bMEL\/PR\//i.test(original)) {
+  if (
+    /\bSPRAYZIIN|APIS FRESH\b/i.test(original) &&
+    /\bMEL\/PR\//i.test(original)
+  ) {
     s = s
       .replace(/\bMEL\/PR\/AGR\b/gi, 'Mel e Propolis e Agriao')
       .replace(/\bMEL\/PR\/ROM\b/gi, 'Mel e Propolis e Roma')
@@ -775,12 +1123,14 @@ function aplicarContextos(entrada) {
     .replace(/(\d{2,4})M\b/g, '$1 mL')
     .replace(/\s*\/\s*$/g, '')
     .replace(/1 Unidades/g, '1 Unidade')
+    .replace(/\b(\d+)\s+Unidades\s+Caps\b/g, '$1 Capsulas')
     .replace(/\b(\d+)\s+Cpr\b/g, '$1 Comprimidos')
     .replace(/\b(\d+)\s+Comp\b/g, '$1 Comprimidos')
     .replace(/\b(\d+)\s+Cps\b/g, '$1 CÃ¡psulas')
     .replace(/\b(\d+)\s+Caps\b/g, '$1 CÃ¡psulas')
     .replace(/\bShp\b/g, 'Shampoo')
     .replace(/Band-aid/g, 'Band-Aid')
+    .replace(/\bSol-millennium\b/g, 'Sol-Millennium')
     .replace(/\bRoc\b/g, 'RoC')
     .replace(/\bFps\b/g, 'FPS')
     .replace(/\bFPS(\d+)\b/g, 'FPS $1')
@@ -876,12 +1226,13 @@ function aplicarContextos(entrada) {
   if (original.includes('DOVE') && original.includes('GL+FER')) {
     s = s
       .replace(/\bOleo Cap\b/g, 'Óleo Capilar')
-    .replace(/\bRep\s+GL\s+FER\b/gi, 'Reparador GL + FER')
+      .replace(/\bRep\s+GL\s+FER\b/gi, 'Reparador GL + FER')
       .replace(/\bReparador\s+GL\s+FER\b/gi, 'Reparador GL + FER');
   }
 
   const codigoBarras = registro?.codigoBarras ?? null;
-  const codigoNormalizado = codigoBarras == null ? null : String(codigoBarras).trim();
+  const codigoNormalizado =
+    codigoBarras == null ? null : String(codigoBarras).trim();
   if (codigoNormalizado && EXACT_NAME_OVERRIDES.has(codigoNormalizado)) {
     s = EXACT_NAME_OVERRIDES.get(codigoNormalizado);
   }

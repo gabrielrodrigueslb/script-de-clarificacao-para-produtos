@@ -21,15 +21,18 @@ function extrairJsonSeguro(texto) {
 }
 
 export async function normalizarNomeComIA(produto) {
-  const nomeOriginal = typeof produto === "string" ? produto : produto.nome || produto.nomeOriginal;
-  const produtoPreNormalizado = preNormalizarProduto(typeof produto === "string" ? nomeOriginal : produto);
+  const nomeOriginal =
+    typeof produto === "string" ? produto : produto.nome || produto.nomeOriginal;
+  const produtoPreNormalizado = preNormalizarProduto(
+    typeof produto === "string" ? nomeOriginal : produto,
+  );
 
   const openai = await getOpenAIClient();
   const response = await openai.responses.create({
     model: "gpt-5.4-nano",
     temperature: 0,
     input: `
-Você é um especialista em normalização de catálogo farmacêutico, higiene, beleza, medicamentos e suplementos.
+Você é um especialista em normalização de catálogos brasileiros de medicamentos, higiene, beleza, suplementos, alimentos, acessórios, utilidades, eletrônicos, calçados e conveniência.
 
 Retorne APENAS JSON válido.
 
@@ -43,16 +46,23 @@ Formato obrigatório:
 Regras:
 - Não invente informações.
 - Preserve marcas quando houver dúvida.
+- Preserve o tipo principal do produto para dar contexto: ex. sandália, fralda, seringa, máscara cirúrgica, fone de ouvido, corretivo, gloss.
 - Use unidades técnicas curtas: mg, mL, mg/mL, mg/g, mcg, g, kg.
 - Nunca escreva Miligrama, Grama ou Mililitro por extenso.
 - Preserve vírgula decimal: 0,250 mg, 0,2 mL, 12,5 mg.
 - Preserve dosagem composta com +: 1 mg + 0,250 mg.
 - Use plural quando quantidade for maior que 1.
 - Não transforme marca em descrição.
+- Preserve códigos e referências comerciais relevantes: AH-2, AL-7, VC-10, S6131, T544120, SSC430.
+- Se houver abreviações claramente comerciais, expanda com prudência: HAV -> Havaianas, MAQ -> Maquiagem, SHAMP -> Shampoo, FR -> Fralda, SER -> Seringa.
+- Se a sigla for ambígua e você não tiver segurança, preserve a sigla em vez de inventar um significado.
 - Respeite contexto: SH pode ser Shampoo em cabelo/higiene e Shake em suplemento.
 - Em cosmético capilar, CAP pode significar Capilar.
 - Em medicamento, CAP pode significar Cápsula.
 - Em barra alimentar, CER pode significar Cereal.
+- Em produtos de acessórios ou moda, trate TAM como tamanho e preserve numerações como 43/44.
+- Para itens da Zanni e similares, corrija apenas abreviações muito seguras como Presilia -> Presilha, Tictac -> Tic Tac, Pq -> Pequeno, Md -> Media, Fn -> Fina.
+- Não transforme REF em Refil por padrão; use Referência quando parecer um código ou modelo.
 - Após o processo de clarificação, caso você identifique que o nome seja claramente um nome de remédio ou perfumaria abreviado, pode corrigir ex:
 termo original: dip sod 500mg
 possivel correcao: Dipirona sódica 500mg
@@ -67,7 +77,7 @@ ${nomeOriginal}
 
 Produto pré-normalizado:
 ${produtoPreNormalizado}
-`
+`,
   });
 
   const json = extrairJsonSeguro(response.output_text);
@@ -80,20 +90,23 @@ ${produtoPreNormalizado}
     precisaRevisao: Boolean(json.precisa_revisao),
     codigoBarras: produto.codigoBarras ?? null,
     nomeLaboratorio: produto.nomeLaboratorio ?? null,
-    nomePrincipioAtivo: produto.nomePrincipioAtivo ?? null
+    nomePrincipioAtivo: produto.nomePrincipioAtivo ?? null,
   };
 }
 
 export function normalizarNomeLocal(produto) {
-  const nomeOriginal = typeof produto === "string" ? produto : produto.nome || produto.nomeOriginal;
+  const nomeOriginal =
+    typeof produto === "string" ? produto : produto.nome || produto.nomeOriginal;
 
   return {
     nomeOriginal,
-    nomeNormalizadoFinal: preNormalizarProduto(typeof produto === "string" ? nomeOriginal : produto),
+    nomeNormalizadoFinal: preNormalizarProduto(
+      typeof produto === "string" ? nomeOriginal : produto,
+    ),
     confianca: "alta",
     precisaRevisao: false,
     codigoBarras: produto.codigoBarras ?? null,
     nomeLaboratorio: produto.nomeLaboratorio ?? null,
-    nomePrincipioAtivo: produto.nomePrincipioAtivo ?? null
+    nomePrincipioAtivo: produto.nomePrincipioAtivo ?? null,
   };
 }
