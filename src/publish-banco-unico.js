@@ -316,11 +316,14 @@ function buildProductRef(product) {
 }
 
 async function normalizeProduct(product, options) {
-  if (String(product?.nomeNormalizadoFinal || "").trim()) {
+  const existingNormalizedName = String(product?.nomeNormalizadoFinal || "").trim();
+  const shouldRenormalizeExistingName = /\b(?:DEP|ENX\s+B|S\/PERF|FRES\s+MIN|U\s+SHEER|ST\s+M|ESFOL|SENSIT|BRANQ|FRD|CHICLE|FORTIF\/|AMONIA|LOCAO|ATAD|LENCO\s+UMD|UMD\s+FRESHQ|PAP\s+FRESHQ|GELEGELE|NATURELIF|LEITE\s+COND|UNIDADES\s+C[ÁA]PS|CX\s+C\/)\b/i.test(existingNormalizedName);
+
+  if (existingNormalizedName && !shouldRenormalizeExistingName) {
     return {
       ...product,
       nomeOriginal: pickFirstString(product.nomeOriginal, product.nome),
-      nomeNormalizadoFinal: String(product.nomeNormalizadoFinal).trim(),
+      nomeNormalizadoFinal: existingNormalizedName,
     };
   }
 

@@ -4,6 +4,13 @@ function limpar(texto) {
     .trim();
 }
 
+function normalizeComparable(texto) {
+  return String(texto || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
 const EXACT_NAME_OVERRIDES = new Map([
   ['3014260318321', 'Escova Dental Oral-B Advantage Artica Macia 35 1 Unidade'],
   ['3014260318345', 'Escova Dental Oral-B Advantage Artica Macia 1 Unidade'],
@@ -258,10 +265,11 @@ function contextoSuplemento(original) {
 function contextoFralda(original) {
   const t = String(original || '').toUpperCase();
   const comecaComoFralda =
-    /^(FR|FD|FDR)[.\s]/.test(t) ||
-    /\b(FR|FD|FDR)\b/.test(t) ||
+    /^(FR|FD|FDR|FRD)[.\s]/.test(t) ||
+    /\b(FR|FD|FDR|FRD)\b/.test(t) ||
     t.startsWith('FD.') ||
-    t.startsWith('FDR.');
+    t.startsWith('FDR.') ||
+    t.startsWith('FRD.');
   if (!comecaComoFralda) return false;
 
   return [
@@ -290,6 +298,9 @@ function contextoFralda(original) {
     'NATURAL BABY',
     'TURMA DA MONICA',
     'JUMBINHO',
+    'J&J',
+    'JOHNSON',
+    'JOHNSONS',
     'BABY',
     'FD.INF',
     'GERIATR',
@@ -351,6 +362,7 @@ function normalizarUnidadesEQuantidades(texto) {
     .replace(/\b(\d+)\s*FPS\b/gi, 'FPS $1')
     .replace(/\bFPS\s*(\d+)\b/gi, 'FPS $1')
     .replace(/\b(\d+)CPR?\b/gi, '$1 Comprimidos')
+    .replace(/\b(\d+)CPS\b/gi, '$1 Cápsulas')
     .replace(/\b(\d+)COMP\b/gi, '$1 Comprimidos')
     .replace(/\b(\d+)CAPS?\b/gi, '$1 Cápsulas')
     .replace(/\b(\d+)DRG\b|\b(\d+)DR\b/gi, (_, a, b) => `${a || b} Drágeas`)
@@ -359,6 +371,7 @@ function normalizarUnidadesEQuantidades(texto) {
     .replace(/C\/(\d+)\+(\d+)/gi, '$1 + $2 Unidades')
     .replace(/C\/(\d+)/gi, '$1 Unidades')
     .replace(/S\/AB/gi, 'Sem Abas')
+    .replace(/S\/PERF/gi, 'Sem Perfume')
     .replace(/C\/AB/gi, 'Com Abas')
     .replace(/C\/REF/gi, 'Com Reforço')
     .replace(/C\/SUP/gi, 'Com Suporte')
@@ -380,6 +393,10 @@ function aplicarContextos(entrada) {
     /\b(ETICOS|SIMILAR|GENERICO|GENERICO)\b/i.test(grupoOrigem) ||
     Boolean(registro?.nomePrincipioAtivo);
   let s = protegerPontosNumericos(original);
+
+  if (/\bSAB(?:AO|ÃO)\s+EM\s+PO\b/i.test(original)) {
+    s = s.replace(/\bSAB(?:AO|ÃO)\s+EM\s+PO\b/gi, '__PO_LIMPEZA__');
+  }
 
   // ponto vira separador, mas códigos tipo 8.3 ficam preservados
   s = s.replace(/[.]+/g, ' ');
@@ -443,15 +460,19 @@ function aplicarContextos(entrada) {
   // Categorias e contextos gerais
   s = s
     .replace(/\bABS\b/gi, 'Absorvente')
+    .replace(/\bATAD\b/gi, 'Atadura')
     .replace(/\bSH\b/gi, 'Shampoo')
     .replace(/\bCOND\b/gi, 'Condicionador')
     .replace(/\bSAB LIQ\b/gi, 'Sabonete Líquido')
     .replace(/\bSAB\b/gi, 'Sabonete')
+    .replace(/\bDESINF\b/gi, 'Desinfetante')
     .replace(/\bDESOD\b|\bDES\b/gi, 'Desodorante')
     .replace(/\bCR DENT\b/gi, 'Creme Dental')
     .replace(/\bCR D\b|\bCRD\b/gi, 'Creme Dental')
     .replace(/\bCR\b|\bCRE\b/gi, 'Creme')
+    .replace(/\bDEP\b/gi, 'Depilatorio')
     .replace(/\bLOC\b/gi, 'Loção')
+    .replace(/\bENX\s+B\b/gi, 'Enxaguante Bucal')
     .replace(/\bENX BUC\b/gi, 'Enxaguante Bucal')
     .replace(/\bESC DENT\b|\bESC D\b/gi, 'Escova Dental')
     .replace(/\bCURAT\b|\bCUR\b/gi, 'Curativo')
@@ -498,6 +519,7 @@ function aplicarContextos(entrada) {
     .replace(/\bLAV\b/gi, 'Lavável')
     .replace(/\bFUR\b/gi, 'Furos')
     .replace(/\bSOD\b/gi, 'Sódico')
+    .replace(/\bCHICLE\b/gi, 'Chiclete')
     .replace(/\bCLOR\b/gi, 'Cloridrato de')
     .replace(/\bFISIOGEL A I\b/gi, 'Fisiogel A.I.')
     .replace(/\bALIV CALM\b/gi, 'Alívio Calmante')
@@ -514,6 +536,11 @@ function aplicarContextos(entrada) {
     .replace(/\bFIOR\b/gi, 'Fiorucci')
     .replace(/\bAE\b/gi, 'Aerossol')
     .replace(/\bECHA\b/gi, 'Echarpe')
+    .replace(/\bFOR\s+MEN\b/gi, 'For Men')
+    .replace(/\bFONTE\s+DE\s+FIB\b/gi, 'Fonte de Fibras')
+    .replace(/\bCABECA\s+ABOBOR\b/gi, 'Cabeca de Abobora')
+    .replace(/\bGELEGELE\b/gi, 'Gelele')
+    .replace(/\bNATURELIF\b/gi, 'Naturelife')
     .replace(/\bIMEDIA\b/gi, 'Imédia')
     .replace(/\bALIC CUT\b/gi, 'Alicate Cutícula')
     .replace(/\bINTERCAMB\b/gi, 'Intercambiável');
@@ -638,9 +665,55 @@ function aplicarContextos(entrada) {
     s = s.replace(/\bPL\s+ADV\b/gi, 'Plus Advanced');
   }
 
+  if (/\bPLAX\b/i.test(original)) {
+    s = s
+      .replace(/\bSENSITIVE\+CD\b/gi, 'Sensitive + Cuidado Diario')
+      .replace(/\bSENSITIVE\s*\+\s*CD\b/gi, 'Sensitive + Cuidado Diario');
+  }
+
   if (/\bLISTERINE\b/i.test(original) && /\bWH PR\b/i.test(original)) {
     s = s.replace(/\bWH\s+PR\b/gi, 'Whitening Pre-Escovacao');
   }
+
+  if (/\bLISTERINE\b/i.test(original)) {
+    s = s.replace(/\bFRES\s+MIN\b/gi, 'Fresh Mint');
+  }
+
+  if (/\bNEUTROGENA\b/i.test(original)) {
+    s = s.replace(/\bU\s+SHEER\b/gi, 'Ultra Sheer');
+  }
+
+  if (/^\s*ABS\b/i.test(original) && /\bSL\b/i.test(original)) {
+    s = s
+      .replace(/\bSL\b/gi, 'Sempre Livre')
+      .replace(/\bC\/\s*ABAS?\b/gi, 'Com Abas');
+  }
+
+  if (/\bCLEAN\s*&\s*CLEAR\b/i.test(original)) {
+    s = s
+      .replace(/\bST\s+M\b/gi, 'Stay Matte')
+      .replace(/\bESFOL\b/gi, 'Esfoliante');
+  }
+
+  if (/\bFORTIF\/FRAG(?:EIS|ÉIS)\b/i.test(original)) {
+    s = s.replace(/\bFORTIF\/FRAG(?:EIS|ÉIS)\b/gi, 'Fortificante para Frageis');
+  }
+
+  if (/\bALISANTE\b/i.test(original)) {
+    s = s.replace(/\bAMONIA\b/gi, 'Amonia');
+  }
+
+  if (/\bLOCAO\b/i.test(original)) {
+    s = s.replace(/\bLOCAO\b/gi, 'Locao');
+  }
+
+  if (/\bBAND-AID\b/i.test(original)) {
+    s = s
+      .replace(/\bL(\d+)\s+P(\d+)\b/gi, 'Leve $1 Pague $2')
+      .replace(/\bL(\d+)P(\d+)\b/gi, 'Leve $1 Pague $2');
+  }
+
+  s = s.replace(/\b-\s*GUARANA\b/gi, 'Guarana');
 
   if (/\bHAV\b|\bHAVAIANAS\b/i.test(original)) {
     s = s
@@ -661,6 +734,10 @@ function aplicarContextos(entrada) {
       .replace(/\bINF\b/gi, 'Infantil');
   }
 
+  if (/^\s*H\s+ALOHA\b/i.test(original) || /^\s*H\s+BABY\b/i.test(original)) {
+    s = s.replace(/^\s*H\b/gi, 'Havaianas');
+  }
+
   if (/^\s*PR\b/i.test(original) && /\bJONTEX\b/i.test(original)) {
     s = s.replace(/^\s*PR\b/gi, 'Preservativo');
   }
@@ -671,6 +748,15 @@ function aplicarContextos(entrada) {
 
   if (/\bLIQ BEBE\b/i.test(original) && /\bGRANADO\b/i.test(original)) {
     s = s.replace(/\bLIQ\s+BEBE\b/gi, 'Liquido Bebe');
+  }
+
+  if (/(?<!\w)J&J(?!\w)|\bJOHNSON\b|\bJOHNSONS\b/i.test(original)) {
+    s = s
+      .replace(/(?<!\w)J&J(?!\w)/gi, 'Johnson')
+      .replace(/\bJOHNSON'?S?\b/gi, 'Johnson')
+      .replace(/\bHID\b/gi, 'Hidratante')
+      .replace(/\bL(\d{2,4})\b/gi, '$1 mL')
+      .replace(/\bPELE\s+SONHOS\b/gi, 'Pele dos Sonhos');
   }
 
   if (
@@ -687,10 +773,15 @@ function aplicarContextos(entrada) {
     s = s
       .replace(/\bPOM\s+POM\b/gi, 'Pom Pom')
       .replace(/\bPOMPOM\b/gi, 'Pom Pom')
+      .replace(/^\s*FRD\b[.\s]*/gi, 'Fralda ')
       .replace(/^\s*FDR\b[.\s]*/gi, 'Fralda ')
       .replace(/^\s*FD\b[.\s]*/gi, 'Fralda ')
       .replace(/^\s*FR\b[.\s]*/gi, 'Fralda ')
       .replace(/\bFR\b/gi, 'Fralda')
+      .replace(/(?<!\w)J&J(?!\w)/gi, 'Johnsons')
+      .replace(/\bJOHNSON'?S?\b/gi, 'Johnsons')
+      .replace(/\bCLASSICA\b/gi, 'Classica')
+      .replace(/\bECON\b/gi, 'Economica')
       .replace(/\b(\d+)PX(\d+)FD\b/gi, '$1 Pacotes x $2 Fraldas')
       .replace(/\b(\d+)FD\b/gi, '$1 Fraldas')
       .replace(/\b(\d+)\s+Fardo\b/gi, '$1 Fraldas')
@@ -808,6 +899,43 @@ function aplicarContextos(entrada) {
       .replace(/\bCreme\s+Pentear\b/gi, 'Creme para Pentear');
   }
 
+  if (/\bLENC(?:O|OS)?\b/i.test(original) && /\b(?:UMD|UMED|UME)\b/i.test(original)) {
+    s = s
+      .replace(/\bLenÃ§o\s+Umedecidos\b/gi, 'LenÃ§os Umedecidos')
+      .replace(/\bLenco\s+Umedecidos\b/gi, 'Lencos Umedecidos');
+  }
+
+  if (/\bLENC(?:O|OS)?\b/i.test(original) && /\bPAP\b/i.test(original)) {
+    s = s.replace(/\bLenÃ§o\s+Pap\b/gi, 'LenÃ§o de Papel');
+  }
+
+  if (/\bLENC(?:O|OS)?\b/i.test(original)) {
+    s = s
+      .replace(/\bLen\S*\s+Umedecidos\b/gi, 'Lencos Umedecidos')
+      .replace(/\bLen\S*\s+Pap\b/gi, 'Lenco de Papel');
+  }
+
+  if (/^\s*TOALHA\b/i.test(original) && /\b(?:UMD|UMED|UME)\b/i.test(original)) {
+    s = s.replace(/\bToalha\s+Umedecidos\b/gi, 'Toalha Umedecida');
+  }
+
+  if (/\bATAD\b/i.test(original) && /\bCREPE\b/i.test(original)) {
+    s = s
+      .replace(/\bAtadura\s+Crepe\b/gi, 'Atadura de Crepe')
+      .replace(/\b(\d+)\s*CM\b/gi, '$1 cm');
+  }
+
+  if (/\bSLIME\b/i.test(original) && /\b(?:GELELE|GELEGELE)\b/i.test(original)) {
+    s = s.replace(/\bGelegele\b/gi, 'Gelele');
+  }
+
+  if (/\b(?:SORVETE|ROCHINHA)\b/i.test(original) && /\bPIC\b/i.test(original)) {
+    s = s
+      .replace(/\bPIC\b/gi, 'Picole')
+      .replace(/\bC\/\b/gi, 'com ')
+      .replace(/\bLEITE\s+COND\b/gi, 'Leite Condensado');
+  }
+
   if (original.startsWith('TERM.CLIN') || original.startsWith('TERM CLIN')) {
     s = s
       .replace(/^\s*Term\s+Clin\b/gi, 'Termômetro Clínico')
@@ -888,6 +1016,94 @@ function aplicarContextos(entrada) {
       .replace(/\bGO\s+FR\b/gi, 'Go Fresh')
       .replace(/\bRO\/VE\b/gi, 'Roma e Verbena')
       .replace(/\bROM\s+VERB\b/gi, 'Roma e Verbena');
+  }
+
+  if (/\b(?:ACTION|ACT!ON)\b/i.test(original)) {
+    s = s
+      .replace(/\bENX(?:(?:A|Á)GUA?)?\s+B\b/gi, 'Enxaguante Bucal')
+      .replace(/\bENX(?:(?:A|Á)GUA?)?\s+BUC\b/gi, 'Enxaguante Bucal')
+      .replace(/\bANTISS(?:EPTICO)?\b/gi, 'Antisseptico')
+      .replace(/\bBUCAL\b/gi, 'Bucal')
+      .replace(/\bMAXPRO\b/gi, 'Max Pro');
+  }
+
+  if (/\bVALDA\b/i.test(original)) {
+    s = s
+      .replace(/\bPAST\b/gi, 'Pastilhas')
+      .replace(/\bDIET\b/gi, 'Diet');
+  }
+
+  if (/(?<!\w)J&J(?!\w)|\bJOHNSON\b|\bJOHNSONS\b/i.test(original) && /^\s*COL\b/i.test(original)) {
+    s = s
+      .replace(/^\s*COL\b/gi, 'Colonia')
+      .replace(/(?<!\w)J&J(?!\w)/gi, 'Johnsons')
+      .replace(/\bJOHNSON'?S?\b/gi, 'Johnsons')
+      .replace(/\bCRESCID\/MENINAS\b/gi, 'Crescidinhos Meninas')
+      .replace(/\bCRESCID\/MENINOS\b/gi, 'Crescidinhos Meninos')
+      .replace(/\bCRESCIDINHOS\/MENINAS\b/gi, 'Crescidinhos Meninas')
+      .replace(/\bCRESCIDINHOS\/MENINOS\b/gi, 'Crescidinhos Meninos')
+      .replace(/\bREFRESC\/BRISA\b/gi, 'Refrescancia Brisa')
+      .replace(/\bREFRESC\/SUAVIDAD(?:E)?\b/gi, 'Suavidade')
+      .replace(/\bREFRESC\/SUAVE\b/gi, 'Suavidade')
+      .replace(/\bEQUILIBRIO\b/gi, 'Equilibrio');
+  }
+
+  if (/\bLA\s+PIEL\b/i.test(original)) {
+    s = s
+      .replace(/^\s*COL\b/gi, 'Colonia')
+      .replace(/\bHID\b/gi, 'Hidratante')
+      .replace(/\bCRISTA?\s+HIMAL\b/gi, 'Cristais do Himalaia')
+      .replace(/\bCRISTAL\s+HIMAL\b/gi, 'Cristais do Himalaia');
+  }
+
+  if (/\b(?:COR&TON|CORETON|CORTON)\b/i.test(original)) {
+    s = s
+      .replace(/\b(?:COR&TON|CORETON|CORTON)\b/gi, 'Cor&Ton')
+      .replace(/\bTINT(?:URA)?\b/gi, 'Coloracao');
+  }
+
+  if (/\bSUNDOWN\b/i.test(original)) {
+    s = s
+      .replace(/\bBZ\b/gi, 'Bronzeador')
+      .replace(/\b(?:OLEO|ÓLEO)\s+GOL\b/gi, 'Oleo Gel')
+      .replace(/\b(?:OLEO|ÓLEO)\s+GEL\b/gi, 'Oleo Gel');
+  }
+
+  if (/\bCREMER\b/i.test(original) && /\bSHORT\b/i.test(original)) {
+    s = s
+      .replace(/^\s*FR\b/gi, 'Fralda')
+      .replace(/\bSHORT\b/gi, 'Shortinho')
+      .replace(/\bJUMB\b/gi, 'Jumbinho')
+      .replace(/\bJUMB\b/gi, 'Jumbinho');
+  }
+
+  if (/^\s*HIDR\b/i.test(original) && /\bARGAN\b/i.test(original) && /\bSEBO\s+DE\s+CARN\b/i.test(original)) {
+    s = s
+      .replace(/^\s*HIDR\b/gi, 'Hidratante')
+      .replace(/\bSEBO\s+DE\s+CARN\b/gi, 'Sebo de Carneiro');
+  }
+
+  if (/\bHAVAIANAS\b/i.test(original) && /\bBABY\b/i.test(original)) {
+    s = s
+      .replace(/\bBRA\b/gi, 'Brasil')
+      .replace(/\bLG\b/gi, 'Logo')
+      .replace(/\bRS\b/gi, 'Rosa')
+      .replace(/\bD\s+CL\b/gi, 'Disney Classics')
+      .replace(/\bAZ\s+WT\b/gi, 'Azul White')
+      .replace(/\bG(\d{2})\/(\d)\b/gi, '$1/$1$2');
+  }
+
+  if (/\bGLICERI\b/i.test(original) && /\bCHEI\b/i.test(original) && /\bBEBE\b/i.test(original)) {
+    s = s
+      .replace(/\bGLICERI\b/gi, 'Glicerina')
+      .replace(/\bCHEI\b/gi, 'Cheirinho de')
+      .replace(/\bBEBE\b/gi, 'Bebe');
+  }
+
+  if (/\bCLEAN\s*&\s*CLEAR\b/i.test(original)) {
+    s = s
+      .replace(/\bMORNING\s+ENERG\b/gi, 'Morning Energy')
+      .replace(/\bHI\b$/gi, 'Hidratante');
   }
 
   if (original.startsWith('OLEO CAP') || original.includes(' OLEO CAP ')) {
@@ -1121,9 +1337,18 @@ function aplicarContextos(entrada) {
 
   s = s
     .replace(/(\d{2,4})M\b/g, '$1 mL')
+    .replace(/\bC\/\s*(\d+)\s*Caps\b/gi, '$1 Cápsulas')
+    .replace(/\bC\/\s*(\d+)\s*Cápsulas\b/gi, '$1 Cápsulas')
+    .replace(/\b(\d+)\s+Mg\s+c\/\s*(\d+)\s*Caps\b/gi, '$1 mg $2 Cápsulas')
+    .replace(/\b(\d+)''S\b/gi, '$1 Unidades')
+    .replace(/\bCX\s+C\/\s*(\d+)\s*UNIDADES?\b/gi, 'Caixa com $1 Unidades')
+    .replace(/\bCX\s+C\/\s*(\d+)\b/gi, 'Caixa com $1 Unidades')
     .replace(/\s*\/\s*$/g, '')
+    .replace(/\s+\*\s*[A-Z]+\s*[A-Z]*\s+\*/g, '')
     .replace(/1 Unidades/g, '1 Unidade')
     .replace(/\b(\d+)\s+Unidades\s+Caps\b/g, '$1 Capsulas')
+    .replace(/\b(\d+)\s+Unidades\s+C[ÃÁA]ps\b/gi, '$1 CÃ¡psulas')
+    .replace(/\b(\d+)\s+Unidades\s+C[ÃÁA]psulas\b/gi, '$1 CÃ¡psulas')
     .replace(/\b(\d+)\s+Cpr\b/g, '$1 Comprimidos')
     .replace(/\b(\d+)\s+Comp\b/g, '$1 Comprimidos')
     .replace(/\b(\d+)\s+Cps\b/g, '$1 CÃ¡psulas')
@@ -1143,6 +1368,7 @@ function aplicarContextos(entrada) {
     .replace(/\bCd\b/g, 'CD')
     .replace(/\bBd\b/g, 'BD')
     .replace(/\bBas\b/g, 'Base')
+    .replace(/\bFreshq\b/g, 'FreshQ')
     .replace(/\bKarite\b/g, 'Karité')
     .replace(/\bClassico\b/g, 'Clássico')
     .replace(/\bEsm\b/g, 'Esmalte')
@@ -1208,7 +1434,25 @@ function aplicarContextos(entrada) {
     .replace(/\bInv Pr Spray\b/g, 'Invisible Spray')
     .replace(/\bInvisible Pr Spray\b/g, 'Invisible Spray')
     .replace(/\bInvis\b/g, 'Invisible')
-    .replace(/\bAntir\b/g, 'Antirrugas');
+    .replace(/\bBranq\b/g, 'Branqueador')
+    .replace(/\bAntir\b/g, 'Antirrugas')
+    .replace(/\bCor&ton\b/g, 'Cor&Ton')
+    .replace(/\bÓleo\s+Gol\b/g, 'Óleo Gel')
+    .replace(/\bOleo\s+Gol\b/g, 'Óleo Gel')
+    .replace(/\bSaboneteão\s+Em\s+Pó\b/g, 'Sabão em Pó')
+    .replace(/\bSaboneteao\s+Em\s+Po\b/g, 'Sabão em Pó');
+
+  if (/\b(?:OMO|BRILHANTE|SURF|TIXAN|ARIEL)\b/i.test(original)) {
+    s = s
+      .replace(/\bSaboneteao\s+Em\s+Po\b/gi, 'Sabão em Po')
+      .replace(/\bSabão\s+Em\s+Po\b/gi, 'Sabão em Po');
+  }
+
+  if (/\b(?:OMO|BRILHANTE|SURF|TIXAN|ARIEL)\b/i.test(original) && /\bPO\b/i.test(original)) {
+    s = s
+      .replace(/__PO_LIMPEZA__/g, 'Sabão em Po')
+      .replace(/\bSabão\s+em\s+Po\b/gi, 'Sabão em Po');
+  }
 
   if (contextoFralda(original)) {
     s = s
@@ -1235,6 +1479,20 @@ function aplicarContextos(entrada) {
     codigoBarras == null ? null : String(codigoBarras).trim();
   if (codigoNormalizado && EXACT_NAME_OVERRIDES.has(codigoNormalizado)) {
     s = EXACT_NAME_OVERRIDES.get(codigoNormalizado);
+  }
+
+  const normalizedResult = normalizeComparable(s);
+
+  if (/\bSUNDOWN\b/i.test(original) && normalizedResult.includes('oleo gol')) {
+    s = s.replace(/gol/gi, 'Gel');
+  }
+
+  if (/\b(?:OMO|BRILHANTE|SURF|TIXAN|ARIEL)\b/i.test(original) && normalizedResult.includes('saboneteao em po')) {
+    s = s.replace(/^.*?\b(Omo|Brilhante|Surf|Tixan|Ariel)\b/i, 'Sabão em Pó $1');
+  }
+
+  if (/\b(?:OMO|BRILHANTE|SURF|TIXAN|ARIEL)\b/i.test(original) && normalizedResult.includes('puro cuidado 8')) {
+    s = s.replace(/\bPuro\s+Cuidado\s+8\b/gi, 'Puro Cuidado 800 g');
   }
 
   return limpar(s);

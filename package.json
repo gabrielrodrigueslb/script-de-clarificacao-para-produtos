@@ -8,7 +8,9 @@
     "publish:banco-unico": "node src/publish-banco-unico.js",
     "publish:banco-unico:api": "node src/publish-banco-unico.js --source=api",
     "publish:banco-unico:alpha7": "node src/publish-banco-unico.js --source=alpha7",
-    "validar:arvore": "node src/validar-arvore-mercadologica.js"
+    "validar:arvore": "node src/validar-arvore-mercadologica.js",
+    "tunnel:alpha7": "powershell -ExecutionPolicy Bypass -File ./scripts/start-alpha7-tunnel.ps1",
+    "test:alpha7": "node ./scripts/test-alpha7-connection.js"
   },
   "dependencies": {
     "dotenv": "latest",
